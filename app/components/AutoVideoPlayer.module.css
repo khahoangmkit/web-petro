@@ -1,0 +1,338 @@
+.container {
+  min-height: 100vh;
+  color: white;
+  padding: 20px;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('/background_petro.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 16px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.backButton {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.backButton:hover {
+  background: #ff5252;
+  transform: translateY(-1px);
+}
+
+.videoInfo {
+  flex: 1;
+  text-align: center;
+}
+
+.videoInfo h2 {
+  margin: 0 0 8px 0;
+  color: #4ecdc4;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.videoInfo p {
+  margin: 0;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.videoContainer {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto 30px auto;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  min-height: 500px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  padding: 30px 20px 20px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.progressContainer {
+  margin-bottom: 16px;
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #4ecdc4, #ff6b6b);
+  border-radius: 4px;
+  transition: width 0.1s ease;
+}
+
+.controlsBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rightControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.controlButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.controlButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.volumeContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.volumeContainer span {
+  font-size: 16px;
+}
+
+.volumeSlider {
+  width: 80px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #4ecdc4;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volumeSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #4ecdc4;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.timeDisplay {
+  color: white;
+  font-size: 14px;
+  font-family: monospace;
+  min-width: 100px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 10px;
+  border-radius: 4px;
+  backdrop-filter: blur(10px);
+}
+
+.playlist {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.playlist h3 {
+  margin: 0 0 16px 0;
+  color: #4ecdc4;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.playlistItems {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.playlistItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.playlistItem:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.playlistItem.current {
+  background: rgba(78, 205, 196, 0.2);
+  border-color: #4ecdc4;
+}
+
+.itemNumber {
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 30px;
+  text-align: center;
+}
+
+.itemInfo {
+  flex: 1;
+}
+
+.itemName {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.itemFolder {
+  color: #888;
+  font-size: 12px;
+}
+
+/* Custom scrollbar */
+.playlistItems::-webkit-scrollbar {
+  width: 6px;
+}
+
+.playlistItems::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.playlistItems::-webkit-scrollbar-thumb {
+  background: #4ecdc4;
+  border-radius: 3px;
+}
+
+.playlistItems::-webkit-scrollbar-thumb:hover {
+  background: #45b7b8;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .header {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  
+  .leftControls {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .volumeContainer {
+    display: none;
+  }
+  
+  .timeDisplay {
+    font-size: 12px;
+    min-width: 80px;
+  }
+  
+  .controlButton {
+    font-size: 18px;
+    padding: 8px;
+  }
+  
+  .video {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .playlist {
+    padding: 16px;
+  }
+  
+  .playlistItem {
+    gap: 12px;
+    padding: 10px;
+  }
+  
+  .itemName {
+    font-size: 13px;
+  }
+  
+  .itemFolder {
+    font-size: 11px;
+  }
+  
+  .timeDisplay {
+    display: none;
+  }
+  
+  .controls {
+    padding: 20px 16px 16px;
+  }
+}

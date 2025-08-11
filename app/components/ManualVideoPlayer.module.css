@@ -1,0 +1,506 @@
+.container {
+  min-height: 100vh;
+  color: white;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('/background_petro.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.backButton {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.backButton:hover {
+  background: #ff5252;
+  transform: translateY(-1px);
+}
+
+.titleInfo {
+  flex: 1;
+  text-align: center;
+}
+
+.titleInfo h2 {
+  margin: 0 0 8px 0;
+  color: #4ecdc4;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.titleInfo p {
+  margin: 0;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  height: calc(100vh - 80px);
+}
+
+.sidebar {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar h3 {
+  margin: 0 0 20px 0;
+  color: #4ecdc4;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-bottom: 2px solid #4ecdc4;
+  padding-bottom: 10px;
+}
+
+.treeContainer {
+  font-size: 14px;
+}
+
+.folderNode {
+  margin-bottom: 4px;
+}
+
+.folderHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.folderHeader:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.folderIcon {
+  font-size: 16px;
+}
+
+.folderName {
+  flex: 1;
+  color: #fff;
+  font-weight: 500;
+}
+
+.expandIcon {
+  color: #888;
+  font-size: 12px;
+}
+
+.folderChildren {
+  margin-left: 8px;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  padding-left: 8px;
+}
+
+.videoNode {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.videoNode:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.videoNode.selected {
+  background: rgba(78, 205, 196, 0.2);
+  border-color: #4ecdc4;
+}
+
+.videoInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.videoIcon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.videoName {
+  color: #fff;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.videoActions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.selectButton,
+.playButton {
+  background: #4ecdc4;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.selectButton:hover,
+.playButton:hover {
+  background: #45b7b8;
+  transform: translateY(-1px);
+}
+
+.playButton {
+  background: #ff6b6b;
+}
+
+.playButton:hover {
+  background: #ff5252;
+}
+
+.videoSection {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.videoInfo {
+  margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 16px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.videoInfo h3 {
+  margin: 0 0 8px 0;
+  color: #4ecdc4;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.videoInfo p {
+  margin: 0;
+  color: #888;
+  font-size: 0.9rem;
+  font-family: monospace;
+}
+
+.videoContainer {
+  position: relative;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  padding: 30px 20px 20px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.progressContainer {
+  margin-bottom: 16px;
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #4ecdc4, #ff6b6b);
+  border-radius: 4px;
+  transition: width 0.1s ease;
+}
+
+.controlsBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rightControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.controlButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.controlButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.volumeContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.volumeContainer span {
+  font-size: 16px;
+}
+
+.volumeSlider {
+  width: 80px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #4ecdc4;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volumeSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #4ecdc4;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.timeDisplay {
+  color: white;
+  font-size: 14px;
+  font-family: monospace;
+  min-width: 100px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 10px;
+  border-radius: 4px;
+  backdrop-filter: blur(10px);
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+}
+
+.placeholderContent {
+  text-align: center;
+  color: #888;
+}
+
+.placeholderIcon {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.placeholderContent h3 {
+  margin: 0 0 12px 0;
+  color: #ccc;
+  font-size: 1.5rem;
+}
+
+.placeholderContent p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Custom scrollbar */
+.sidebar::-webkit-scrollbar,
+.videoSection::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.videoSection::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.videoSection::-webkit-scrollbar-thumb {
+  background: #4ecdc4;
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+.videoSection::-webkit-scrollbar-thumb:hover {
+  background: #45b7b8;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 300px 1fr;
+  }
+  
+  .sidebar {
+    padding: 16px;
+  }
+  
+  .videoSection {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  
+  .sidebar {
+    max-height: 300px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .header {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  
+  .leftControls {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .volumeContainer {
+    display: none;
+  }
+  
+  .timeDisplay {
+    font-size: 12px;
+    min-width: 80px;
+  }
+  
+  .controlButton {
+    font-size: 18px;
+    padding: 8px;
+  }
+  
+  .video {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .videoActions {
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .selectButton,
+  .playButton {
+    padding: 3px 6px;
+    font-size: 9px;
+  }
+  
+  .videoName {
+    font-size: 11px;
+  }
+  
+  .timeDisplay {
+    display: none;
+  }
+  
+  .controls {
+    padding: 20px 16px 16px;
+  }
+  
+  .placeholder {
+    min-height: 300px;
+  }
+  
+  .placeholderIcon {
+    font-size: 48px;
+  }
+  
+  .placeholderContent h3 {
+    font-size: 1.2rem;
+  }
+  
+  .placeholderContent p {
+    font-size: 0.9rem;
+  }
+}
