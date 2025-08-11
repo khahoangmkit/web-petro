@@ -1,19 +1,16 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
 import styles from './ManualVideoPlayer.module.css';
 
 export default function ManualVideoPlayer({onBack}) {
   const videoRef = useRef(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(1);
   const [showControls, setShowControls] = useState(true);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const [expandedFolders, setExpandedFolders] = useState({});
+  const [expandedFolders, setExpandedFolders] = useState({
+    '1. Chuyển đổi số ': true  // Mặc định mở thư mục cấp đầu tiên
+  });
 
   // Cấu trúc tree thư mục dataSources trong folder public
   const folderStructure =
@@ -98,12 +95,6 @@ export default function ManualVideoPlayer({onBack}) {
     }));
   };
 
-  const selectVideo = (video) => {
-    setSelectedVideo(video);
-    setIsPlaying(false);
-    setCurrentTime(0);
-  };
-
   const playVideoFullscreen = (video) => {
     // Create a new video element for fullscreen playback
     const videoElement = document.createElement('video');
@@ -183,80 +174,6 @@ export default function ManualVideoPlayer({onBack}) {
         document.mozCancelFullScreen();
       }
     };
-  };
-
-  const togglePlay = () => {
-    const video = videoRef.current;
-    if (video.paused) {
-      video.play();
-      setIsPlaying(true);
-    } else {
-      video.pause();
-      setIsPlaying(false);
-    }
-  };
-
-  const handleSeek = (e) => {
-    const video = videoRef.current;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const pos = (e.clientX - rect.left) / rect.width;
-    video.currentTime = pos * duration;
-  };
-
-  const handleVolumeChange = (e) => {
-    const newVolume = parseFloat(e.target.value);
-    setVolume(newVolume);
-    videoRef.current.volume = newVolume;
-  };
-
-  const enterFullscreen = async () => {
-    const video = videoRef.current;
-    try {
-      if (video.requestFullscreen) {
-        await video.requestFullscreen();
-      } else if (video.webkitRequestFullscreen) {
-        await video.webkitRequestFullscreen();
-      } else if (video.mozRequestFullScreen) {
-        await video.mozRequestFullScreen();
-      }
-      setIsFullscreen(true);
-    } catch (error) {
-      console.error('Error entering fullscreen:', error);
-    }
-  };
-
-  const exitFullscreen = async () => {
-    try {
-      if (document.exitFullscreen) {
-        await document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        await document.webkitExitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        await document.mozCancelFullScreen();
-      }
-      setIsFullscreen(false);
-    } catch (error) {
-      console.error('Error exiting fullscreen:', error);
-    }
-  };
-
-  const toggleFullscreen = () => {
-    if (isFullscreen) {
-      exitFullscreen();
-    } else {
-      enterFullscreen();
-    }
-  };
-
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  };
-
-  const skipTime = (seconds) => {
-    const video = videoRef.current;
-    video.currentTime = Math.max(0, Math.min(duration, video.currentTime + seconds));
   };
 
   const renderTreeNode = (node, path = '', level = 0) => {

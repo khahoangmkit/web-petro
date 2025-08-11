@@ -15,12 +15,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
 }
 
 .backButton {
-  background: #ff6b6b;
+  background: #F88126;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -32,7 +31,7 @@
 }
 
 .backButton:hover {
-  background: #ff5252;
+  background: #fa8934;
   transform: translateY(-1px);
 }
 
@@ -43,7 +42,7 @@
 
 .titleInfo h2 {
   margin: 0 0 8px 0;
-  color: #4ecdc4;
+  color: #fff;
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -63,7 +62,6 @@
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  background: rgba(0, 0, 0, 0.8);
   padding: 20px;
   overflow-y: auto;
   backdrop-filter: blur(10px);
@@ -73,10 +71,10 @@
 
 .sidebar h3 {
   margin: 0 0 20px 0;
-  color: #4ecdc4;
+  color: #F88126;
   font-size: 1.2rem;
   font-weight: 600;
-  border-bottom: 2px solid #4ecdc4;
+  border-bottom: 2px solid #F88126;
   padding-bottom: 10px;
 }
 
@@ -109,7 +107,7 @@
 .folderName {
   flex: 1;
   color: #fff;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .expandIcon {
@@ -127,7 +125,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
+  /*padding: 8px 12px;*/
   margin-bottom: 4px;
   border-radius: 6px;
   transition: all 0.2s ease;
@@ -190,11 +188,11 @@
 }
 
 .playButton {
-  background: #ff6b6b;
+  background: #F88126;
 }
 
 .playButton:hover {
-  background: #ff5252;
+  background: rgba(248, 129, 38, 0.93);
 }
 
 .videoSection {
@@ -203,8 +201,7 @@
 }
 
 .videoInfo {
-  margin-bottom: 20px;
-  background: rgba(0, 0, 0, 0.7);
+  /*margin-bottom: 20px;*/
   padding: 16px;
   border-radius: 8px;
   backdrop-filter: blur(10px);
