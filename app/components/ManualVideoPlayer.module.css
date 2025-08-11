@@ -55,17 +55,20 @@
 }
 
 .content {
-  display: grid;
-  grid-template-columns: 350px 1fr;
+  display: flex;
   height: calc(100vh - 80px);
 }
 
 .sidebar {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
   background: rgba(0, 0, 0, 0.8);
   padding: 20px;
   overflow-y: auto;
   backdrop-filter: blur(10px);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin-top: 20px;
 }
 
 .sidebar h3 {
@@ -410,30 +413,15 @@
 /* Responsive design */
 @media (max-width: 1024px) {
   .content {
-    grid-template-columns: 300px 1fr;
+    height: calc(100vh - 80px);
   }
   
   .sidebar {
-    padding: 16px;
-  }
-  
-  .videoSection {
     padding: 16px;
   }
 }
 
 @media (max-width: 768px) {
-  .content {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-  }
-  
-  .sidebar {
-    max-height: 300px;
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
   .header {
     flex-direction: column;
     gap: 12px;

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import styles from './ManualVideoPlayer.module.css';
 
 export default function ManualVideoPlayer({onBack}) {
@@ -14,7 +15,7 @@ export default function ManualVideoPlayer({onBack}) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [expandedFolders, setExpandedFolders] = useState({});
 
-  // Cấu trúc tree thư mục dataSources
+  // Cấu trúc tree thư mục dataSources trong folder public
   const folderStructure =
     {
       name: '1. Chuyển đổi số ',
@@ -37,7 +38,7 @@ export default function ManualVideoPlayer({onBack}) {
           ]
         },
         {
-          name: '2.Ban Cong nghệ Thông tin',
+          name: '2.Ban Công nghệ Thông tin',
           type: 'folder',
           children: [
             {
@@ -104,15 +105,84 @@ export default function ManualVideoPlayer({onBack}) {
   };
 
   const playVideoFullscreen = (video) => {
-    selectVideo(video);
-    setTimeout(() => {
-      const videoElement = videoRef.current;
-      if (videoElement) {
-        videoElement.play();
+    // Create a new video element for fullscreen playback
+    const videoElement = document.createElement('video');
+    videoElement.src = video.path;
+    videoElement.controls = true;
+    videoElement.style.width = '100vw';
+    videoElement.style.height = '100vh';
+    videoElement.style.backgroundColor = '#000';
+    videoElement.style.objectFit = 'contain';
+    
+    // Add video to DOM temporarily
+    document.body.appendChild(videoElement);
+    
+    // Handle video loaded
+    videoElement.onloadeddata = () => {
+      videoElement.play().then(() => {
+        // Request fullscreen on the video element
+        if (videoElement.requestFullscreen) {
+          videoElement.requestFullscreen();
+        } else if (videoElement.webkitRequestFullscreen) {
+          videoElement.webkitRequestFullscreen();
+        } else if (videoElement.mozRequestFullScreen) {
+          videoElement.mozRequestFullScreen();
+        }
+        
         setIsPlaying(true);
-        enterFullscreen();
+        setSelectedVideo(video);
+      }).catch(error => {
+        console.error('Error playing video:', error);
+        document.body.removeChild(videoElement);
+      });
+    };
+    
+    // Handle fullscreen exit
+    const handleFullscreenChange = () => {
+      if (!document.fullscreenElement && 
+          !document.webkitFullscreenElement && 
+          !document.mozFullScreenElement) {
+        // Fullscreen exited, clean up
+        videoElement.pause();
+        if (document.body.contains(videoElement)) {
+          document.body.removeChild(videoElement);
+        }
+        setIsPlaying(false);
+        setIsFullscreen(false);
+        
+        // Remove event listeners
+        document.removeEventListener('fullscreenchange', handleFullscreenChange);
+        document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+        document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      } else {
+        setIsFullscreen(true);
       }
-    }, 100);
+    };
+    
+    // Add fullscreen change listeners
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    
+    // Handle load errors
+    videoElement.onerror = (error) => {
+      console.error('Error loading video:', error);
+      alert('Không thể tải video: ' + video.name);
+      if (document.body.contains(videoElement)) {
+        document.body.removeChild(videoElement);
+      }
+    };
+    
+    // Handle video end
+    videoElement.onended = () => {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      }
+    };
   };
 
   const togglePlay = () => {
@@ -222,24 +292,11 @@ export default function ManualVideoPlayer({onBack}) {
           key={currentPath}
           className={`${styles.videoNode} ${selectedVideo?.path === node.path ? styles.selected : ''}`}
           style={{paddingLeft: `${level * 20}px`}}
+          onClick={() => playVideoFullscreen(node)}
         >
           <div className={styles.videoInfo}>
             <span className={styles.videoIcon}>🎬</span>
             <span className={styles.videoName}>{node.name}</span>
-          </div>
-          <div className={styles.videoActions}>
-            <button
-              className={styles.selectButton}
-              onClick={() => selectVideo(node)}
-            >
-              📺 Chọn
-            </button>
-            <button
-              className={styles.playButton}
-              onClick={() => playVideoFullscreen(node)}
-            >
-              ▶️ Phát
-            </button>
           </div>
         </div>
       );
@@ -259,108 +316,10 @@ export default function ManualVideoPlayer({onBack}) {
 
       <div className={styles.content}>
         <div className={styles.sidebar}>
-          <h3>Cấu trúc thư mục</h3>
+          <h3>Danh sách video</h3>
           <div className={styles.treeContainer}>
             {renderTreeNode(folderStructure)}
           </div>
-        </div>
-
-        <div className={styles.videoSection}>
-          {selectedVideo ? (
-            <>
-              <div className={styles.videoInfo}>
-                <h3>{selectedVideo.name}</h3>
-              </div>
-
-              <div
-                className={styles.videoContainer}
-                onMouseMove={() => setShowControls(true)}
-                onMouseLeave={() => isPlaying && setShowControls(false)}
-              >
-                <video
-                  ref={videoRef}
-                  className={styles.video}
-                  src={selectedVideo.path}
-                  onClick={togglePlay}
-                />
-
-                {showControls && (
-                  <div className={styles.controls}>
-                    <div className={styles.progressContainer}>
-                      <div
-                        className={styles.progressBar}
-                        onClick={handleSeek}
-                      >
-                        <div
-                          className={styles.progress}
-                          style={{width: `${(currentTime / duration) * 100}%`}}
-                        />
-                      </div>
-                    </div>
-
-                    <div className={styles.controlsBottom}>
-                      <div className={styles.leftControls}>
-                        <button
-                          className={styles.controlButton}
-                          onClick={togglePlay}
-                        >
-                          {isPlaying ? '⏸️' : '▶️'}
-                        </button>
-
-                        <button
-                          className={styles.controlButton}
-                          onClick={() => skipTime(-10)}
-                        >
-                          ⏪
-                        </button>
-
-                        <button
-                          className={styles.controlButton}
-                          onClick={() => skipTime(10)}
-                        >
-                          ⏩
-                        </button>
-
-                        <div className={styles.volumeContainer}>
-                          <span>🔊</span>
-                          <input
-                            type="range"
-                            min="0"
-                            max="1"
-                            step="0.1"
-                            value={volume}
-                            onChange={handleVolumeChange}
-                            className={styles.volumeSlider}
-                          />
-                        </div>
-
-                        <div className={styles.timeDisplay}>
-                          {formatTime(currentTime)} / {formatTime(duration)}
-                        </div>
-                      </div>
-
-                      <div className={styles.rightControls}>
-                        <button
-                          className={styles.controlButton}
-                          onClick={toggleFullscreen}
-                        >
-                          {isFullscreen ? '🔲' : '⛶'}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </>
-          ) : (
-            <div className={styles.placeholder}>
-              <div className={styles.placeholderContent}>
-                <span className={styles.placeholderIcon}>🎬</span>
-                <h3>Chọn video để phát</h3>
-                <p>Sử dụng cây thư mục bên trái để chọn video muốn xem</p>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>
