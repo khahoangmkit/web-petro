@@ -4,7 +4,9 @@ const nextConfig = {
   images: {
     unoptimized: true, // Bắt buộc cho next/image khi export
   },
-  assetPrefix: './',
+  trailingSlash: true,
+  // Remove assetPrefix for now to avoid the error
+  // We'll handle asset paths differently
 };
 
 export default nextConfig;

@@ -139,14 +139,10 @@ export default function ManualVideoPlayer({onBack}) {
           document.body.removeChild(videoElement);
         }
         setIsPlaying(false);
-        setIsFullscreen(false);
-        
         // Remove event listeners
         document.removeEventListener('fullscreenchange', handleFullscreenChange);
         document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
         document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
-      } else {
-        setIsFullscreen(true);
       }
     };
     
