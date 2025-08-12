@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from "next/image";
 import styles from "./page.module.css";
 import AutoVideoPlayer from './components/AutoVideoPlayer';
 import ManualVideoPlayer from './components/ManualVideoPlayer';
@@ -30,8 +29,8 @@ export default function Home() {
             onClick={() => setMode('auto')}
           >
             <div className={styles.buttonContent}>
-              <h3>Chế độ Tự động</h3>
-              <p>Phát lần lượt toàn bộ video trong hệ thống</p>
+              <img src="/icons/auto-renewal.svg" style={{display: "inline-block"}} alt="Manual" width={50}></img>
+              <h3>Phát tự động</h3>
             </div>
           </button>
 
@@ -40,8 +39,8 @@ export default function Home() {
             onClick={() => setMode('manual')}
           >
             <div className={styles.buttonContent}>
-              <h3>Chế độ Thủ công</h3>
-              <p>Chọn video từ danh sách thư mục</p>
+              <img src="/icons/hand-raised.svg" alt="Manual" width={50}></img>
+              <h3>Phát Thủ công</h3>
             </div>
           </button>
         </div>

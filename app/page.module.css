@@ -79,16 +79,19 @@
 }
 
 .autoButton {
-  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+  justify-content: center;
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);
 }
 
 .autoButton:hover {
-  box-shadow: 0 15px 35px rgba(76, 175, 80, 0.4);
+  box-shadow: 0 15px 35px rgba(33, 150, 243, 0.4);
 }
 
 .manualButton {
-  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+  justify-content: center;
+
+  background: linear-gradient(135deg, #fcba4e 0%, #F88126 100%);
   box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);
 }
 
@@ -102,13 +105,16 @@
 }
 
 .buttonContent {
-  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .buttonContent h3 {
   font-size: 1.4rem;
   font-weight: 600;
-  margin: 0 0 8px 0;
 }
 
 .buttonContent p {
