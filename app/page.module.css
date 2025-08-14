@@ -1,43 +1,48 @@
 .page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+  /*--gray-rgb: 0, 0, 0;*/
+  /*--gray-alpha-200: rgba(var(--gray-rgb), 0.08);*/
+  /*--gray-alpha-100: rgba(var(--gray-rgb), 0.05);*/
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
+  /*--button-primary: #F88126;*/
+  /*--button-primary-hover: #e6741f;*/
+  /*--button-secondary: #ffffff;*/
+  /*--button-secondary-hover: #f2f2f2;*/
 
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   min-height: 100vh;
   padding: 20px;
   font-family: var(--font-geist-sans);
+  position: relative;
+  overflow: hidden;
 }
+
+/*.container {*/
+/*  max-width: 800px;*/
+/*  width: 100%;*/
+/*  text-align: center;*/
+/*  !*background: rgba(255, 255, 255, 0.95);*!*/
+/*  border-radius: 20px;*/
+/*  padding: 40px;*/
+/*  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);*/
+/*  backdrop-filter: blur(10px);*/
+/*}*/
 
 .container {
-  max-width: 800px;
-  width: 100%;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
 }
 
-.header {
-  margin-bottom: 50px;
-}
-
-.title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin: 0 0 16px 0;
-  background: linear-gradient(45deg, #0A54A8, #F88126);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/*.title {*/
+/*  font-size: 3rem;*/
+/*  font-weight: 700;*/
+/*  margin: 0 0 16px 0;*/
+/*  background: linear-gradient(45deg, #0A54A8, #F88126);*/
+/*  -webkit-background-clip: text;*/
+/*  -webkit-text-fill-color: transparent;*/
+/*  background-clip: text;*/
+/*}*/
 
 .subtitle {
   font-size: 1.3rem;
@@ -50,14 +55,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
-  margin-bottom: 40px;
 }
 
 .modeButton {
   background: linear-gradient(135deg, #fcba4e 0%, #f87926 100%);
   border: none;
   border-radius: 16px;
-  padding: 30px 20px;
+  padding: 20px 20px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 8px 25px rgba(248, 121, 38, 0.3);
@@ -66,7 +70,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  min-height: 140px;
+  /*min-height: 140px;*/
 }
 
 .modeButton:hover {
@@ -133,6 +137,26 @@
   color: #888;
   font-size: 1rem;
   margin: 0;
+}
+
+.backgroundVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: -1;
 }
 
 /* Responsive design */

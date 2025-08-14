@@ -58,25 +58,7 @@
   height: calc(100vh - 80px);
 }
 
-.sidebar {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  overflow-y: auto;
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  margin-top: 20px;
-}
 
-.sidebar h3 {
-  margin: 0 0 20px 0;
-  color: #F88126;
-  font-size: 1.5rem;
-  font-weight: 600;
-  border-bottom: 2px solid #F88126;
-  padding-bottom: 10px;
-}
 
 .treeContainer {
   font-size: 14px;
@@ -489,4 +471,39 @@
   .placeholderContent p {
     font-size: 0.9rem;
   }
+}
+
+
+.nodeCard {
+  padding: 10px;
+  background: linear-gradient(180deg, #4A90E2 0%, #2979FF 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nodeCard:hover {
+  /*transform: translateY(-5px);*/
+  /*box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);*/
+  transform: translateY(-2px);
+  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.6);
+}
+
+.nodeName {
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.nodePosition {
+  color: #666;
+  margin-top: 3px;
 }
