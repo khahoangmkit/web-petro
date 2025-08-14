@@ -2,25 +2,23 @@
 
 import { useEffect, useState } from 'react';
 import styles from "./page.module.css";
-import AutoVideoPlayer from './components/AutoVideoPlayer';
 import ManualVideoPlayer from './components/ManualVideoPlayer';
-import { OrgChart as D3OrgChart } from 'd3-org-chart';
 
 export default function Home() {
   const [mode, setMode] = useState(null); // null, 'auto', 'manual'
 
   // Danh sách tất cả video để phát tự động
   const videoList = [
-    {
-      name: 'Video 1: Diễn tập PA chữa cháy & CNCH bể C11-K130',
-      path: '/dataSources/1.Chuyen_doi_so/1.Ban Cong nghệ an toàn/1. (Video 1)Diễn tập PA chữa cháy & CNCH bể  C11-K130 (12-9-2021).mp4',
-      folder: 'Ban Công nghệ an toàn'
-    },
-    {
-      name: 'Video 2: Diễn tập UPSC Trần Đầu TKXD Nhà Bè 2019',
-      path: '/dataSources/1.Chuyen_doi_so/1.Ban Cong nghệ an toàn/2. (Video 2)DIEN TAP UPSC TRAN  DAU TKXD NHA BE 2019 - hoan chinh ten nhan vat.mp4',
-      folder: 'Ban Công nghệ an toàn'
-    },
+    // {
+    //   name: 'Video 1: Diễn tập PA chữa cháy & CNCH bể C11-K130',
+    //   path: '/dataSources/1.Chuyen_doi_so/1.Ban Cong nghệ an toàn/1. (Video 1)Diễn tập PA chữa cháy & CNCH bể  C11-K130 (12-9-2021).mp4',
+    //   folder: 'Ban Công nghệ an toàn'
+    // },
+    // {
+    //   name: 'Video 2: Diễn tập UPSC Trần Đầu TKXD Nhà Bè 2019',
+    //   path: '/dataSources/1.Chuyen_doi_so/1.Ban Cong nghệ an toàn/2. (Video 2)DIEN TAP UPSC TRAN  DAU TKXD NHA BE 2019 - hoan chinh ten nhan vat.mp4',
+    //   folder: 'Ban Công nghệ an toàn'
+    // },
     {
       name: '1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng.mp4',
       path: '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
@@ -121,10 +119,6 @@ export default function Home() {
     loadAndPlayVideo(currentIndex);
   };
 
-  // if (mode === 'auto') {
-  //   return <AutoVideoPlayer onBack={() => setMode(null)} />;
-  // }
-
   if (mode === 'manual') {
     return <ManualVideoPlayer onBack={() => setMode(null)} />;
   }
@@ -142,14 +136,10 @@ export default function Home() {
         <source src="/sources/PLC.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      
-      {/* Dark Overlay */}
+
       <div className={styles.overlay}></div>
       
       <div className={styles.container}>
-        {/*<header className={styles.header}>*/}
-        {/*  /!*<h1 className={styles.title}>Ban Công Nghệ An Toàn</h1>*!/*/}
-        {/*</header>*/}
 
         <div className={styles.buttonContainer}>
           <button 

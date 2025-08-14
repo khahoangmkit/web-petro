@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from 'react';
 import styles from './ManualVideoPlayer.module.css';
-import { OrgChart as D3OrgChart } from 'd3-org-chart';
 
 export default function ManualVideoPlayer({onBack}) {
   const videoRef = useRef(null);
@@ -177,137 +176,6 @@ export default function ManualVideoPlayer({onBack}) {
     };
   };
 
-  const renderTreeNode = (node, path = '', level = 0) => {
-    const currentPath = path ? `${path}/${node.name}` : node.name;
-    const isExpanded = expandedFolders[currentPath];
-
-    if (node.type === 'folder') {
-      return (
-        <div key={currentPath} className={styles.folderNode}>
-          <div
-            className={styles.folderHeader}
-            style={{paddingLeft: `${level * 20}px`}}
-            onClick={() => toggleFolder(currentPath)}
-          >
-            <span className={styles.folderIcon}>
-              {isExpanded ? '📂' : '📁'}
-            </span>
-            <span className={styles.folderName}>{node.name}</span>
-            <span className={styles.expandIcon}>
-              {isExpanded ? '▼' : '▶'}
-            </span>
-          </div>
-          {isExpanded && node.children && (
-            <div className={styles.folderChildren}>
-              {node.children.map(child => renderTreeNode(child, currentPath, level + 1))}
-            </div>
-          )}
-        </div>
-      );
-    } else if (node.type === 'video') {
-      return (
-        <div
-          key={currentPath}
-          className={`${styles.videoNode} ${selectedVideo?.path === node.path ? styles.selected : ''}`}
-          style={{paddingLeft: `${level * 20}px`}}
-          onClick={() => playVideoFullscreen(node)}
-        >
-          <div className={styles.videoInfo}>
-            <span className={styles.videoIcon}>🎬</span>
-            <span className={styles.videoName}>{node.name}</span>
-          </div>
-        </div>
-      );
-    }
-  };
-
-
-
-  useEffect(() => {
-
-    const playVideo = (url) => {
-      if (!url) return;
-      console.log('Playing video:', url);
-      // Logic phát video sẽ được thêm sau
-    };
-
-    // Hàm xử lý click với animation
-    const handleNodeClick = (event, url) => {
-      console.log('==============das', url)
-      const nodeElement = event.currentTarget;
-
-      // Gọi hàm phát video
-      if (url) {
-        console.log("=================", url)
-        playVideo(url);
-        playVideoFullscreen( {
-          name: '1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng.mp4',
-          type: 'video',
-          path: url
-        });
-      }
-    };
-
-    // Gắn hàm vào window để có thể gọi từ HTML
-    window.handleNodeClick = handleNodeClick;
-
-    // Dữ liệu mẫu cho sơ đồ
-    const data = [
-      { id: '0', parentId: null, name: 'Petrolimex' },
-      { id: '1', parentId: '0', name: 'Tổng công ty hóa dầu Petrolimex' },
-      { id: '2', parentId: '1', name: 'Video 30 năm', url: './sources/30nam.mp4' },
-      { id: '3', parentId: '1', name: 'Năng lực PLC' },
-      { id: '4', parentId: '1', name: 'SP Dầu mỡ nhờn' },
-      { id: '5', parentId: '1', name: 'SP PowerSyn, Cater CI-4, Racer Scooter' },
-      { id: '6', parentId: '0', name: 'CTY TNHH Nhựa đường Petrolimex' },
-      { id: '7', parentId: '6', name: 'Video 15 năm' },
-      { id: '8', parentId: '6', name: 'SP nhựa đường' },
-      { id: '9', parentId: '6', name: 'SP hóa chất' },
-    ];
-
-    let chart = null;
-
-    // Đảm bảo container đã tồn tại trước khi vẽ
-    if (d3Container.current) {
-      chart = new D3OrgChart();
-      chart
-        .container(d3Container.current) // Chỉ định container
-        .data(data) // Nạp dữ liệu
-        .nodeId((d) => d.id)
-        .parentNodeId((d) => d.parentId)
-        .compact(false) // Tắt compact mode để có space tốt hơn
-        .onNodeClick((d) => {
-          console.log('Node clicked:', d);
-        })
-        .nodeContent(function (d) {
-          // Tùy chỉnh giao diện cho mỗi nút
-          return `
-            <div class="${styles.nodeCard}" onclick="window.handleNodeClick(event, '${d.data.url || ''}')">
-                <div class="${styles.nodeName}">${d.data.name}</div>
-<!--                <div class="${styles.nodePosition}">${d.data.position}</div>-->
-            </div>
-          `;
-        })
-        .render() // Vẽ sơ đồ
-        .fit(); // Center chart ngay khi render xong
-
-      // Thêm event listener cho window resize để auto-center
-      const handleResize = () => {
-        if (chart) {
-          chart.fit();
-        }
-      };
-
-      window.addEventListener('resize', handleResize);
-
-      // Cleanup function
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }
-  }, []);
-  
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -319,7 +187,7 @@ export default function ManualVideoPlayer({onBack}) {
         </div>
       </div>
 
-      <div ref={d3Container} style={{ width: '100vw', height: '100vh'}} />
+
     </div>
   );
 }
