@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from "./page.module.css";
 import AutoVideoPlayer from './components/AutoVideoPlayer';
 import ManualVideoPlayer from './components/ManualVideoPlayer';
+import { OrgChart as D3OrgChart } from 'd3-org-chart';
 
 export default function Home() {
   const [mode, setMode] = useState(null); // null, 'auto', 'manual'
@@ -23,7 +24,7 @@ export default function Home() {
     {
       name: '1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng.mp4',
       path: '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
-      folder: 'Ban Cong nghệ Thông tin'
+      folder: 'Ban Công nghệ Thông tin'
     },
     {
       name: '2.Định danh tài khoản bằng NFC.mp4',
@@ -130,10 +131,25 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
+      {/* Video Background */}
+      <video 
+        className={styles.backgroundVideo}
+        autoPlay 
+        muted 
+        loop 
+        playsInline
+      >
+        <source src="/sources/PLC.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
+      {/* Dark Overlay */}
+      <div className={styles.overlay}></div>
+      
       <div className={styles.container}>
-        <header className={styles.header}>
-          <h1 className={styles.title}>Ban Công Nghệ An Toàn</h1>
-        </header>
+        {/*<header className={styles.header}>*/}
+        {/*  /!*<h1 className={styles.title}>Ban Công Nghệ An Toàn</h1>*!/*/}
+        {/*</header>*/}
 
         <div className={styles.buttonContainer}>
           <button 
@@ -141,8 +157,8 @@ export default function Home() {
             onClick={startAutoPlayImmediately}
           >
             <div className={styles.buttonContent}>
-              <img src="/icons/auto-renewal.svg" style={{display: "inline-block"}} alt="Manual" width={50}></img>
-              <h3>Phát tự động</h3>
+              <img src="/icons/auto-renewal.svg" style={{display: "inline-block"}} alt="Auto" width={50}></img>
+              {/*<h3>Phát tự động</h3>*/}
             </div>
           </button>
 
@@ -152,7 +168,7 @@ export default function Home() {
           >
             <div className={styles.buttonContent}>
               <img src="/icons/hand-raised.svg" alt="Manual" width={50}></img>
-              <h3>Phát Thủ công</h3>
+              {/*<h3>Phát Thủ công</h3>*/}
             </div>
           </button>
         </div>
