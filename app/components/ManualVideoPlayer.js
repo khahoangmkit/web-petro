@@ -241,7 +241,7 @@ export default function ManualVideoPlayer({onBack}) {
         console.log("=================", url)
         playVideo(url);
         playVideoFullscreen( {
-          name: '1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng.mp4',
+          name: '1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng.mp4',
           type: 'video',
           path: url
         });
@@ -255,14 +255,14 @@ export default function ManualVideoPlayer({onBack}) {
     const data = [
       { id: '0', parentId: null, name: 'Petrolimex' },
       { id: '1', parentId: '0', name: 'Tổng công ty hóa dầu Petrolimex' },
-      { id: '2', parentId: '1', name: '30 năm thành lập  PLC', url: './sources/30nam.mp4' },
+      { id: '2', parentId: '1', name: 'Video 30 năm', url: './sources/30nam.mp4' },
       { id: '3', parentId: '1', name: 'Năng lực PLC' },
-      { id: '4', parentId: '1', name: 'Sản phẩm Dầu mỡ nhờn' },
-      { id: '5', parentId: '1', name: 'Sản phẩm PowerSyn, Cater CI-4, Racer Scooter' },
-      { id: '6', parentId: '0', name: 'Công ty TNHH Nhựa đường Petrolimex' },
-      { id: '7', parentId: '6', name: '15 ngày thành lập công ty TNHH Nhựa đường Petrolimex' },
-      { id: '8', parentId: '6', name: 'Sản phẩm nhựa đường của Công ty TNHH Nhựa đường petrolimex' },
-      { id: '9', parentId: '6', name: 'Sản phẩm hóa chất' },
+      { id: '4', parentId: '1', name: 'SP Dầu mỡ nhờn' },
+      { id: '5', parentId: '1', name: 'SP PowerSyn, Cater CI-4, Racer Scooter' },
+      { id: '6', parentId: '0', name: 'CTY TNHH Nhựa đường Petrolimex' },
+      { id: '7', parentId: '6', name: 'Video 15 năm' },
+      { id: '8', parentId: '6', name: 'SP nhựa đường' },
+      { id: '9', parentId: '6', name: 'SP hóa chất' },
     ];
 
     let chart = null;
@@ -275,9 +275,12 @@ export default function ManualVideoPlayer({onBack}) {
         .data(data) // Nạp dữ liệu
         .nodeId((d) => d.id)
         .parentNodeId((d) => d.parentId)
+        .compact(false) // Tắt compact mode để có space tốt hơn
+        .onNodeClick((d) => {
+          console.log('Node clicked:', d);
+        })
         .nodeContent(function (d) {
           // Tùy chỉnh giao diện cho mỗi nút
-
           return `
             <div class="${styles.nodeCard}" onclick="window.handleNodeClick(event, '${d.data.url || ''}')">
                 <div class="${styles.nodeName}">${d.data.name}</div>
@@ -285,10 +288,25 @@ export default function ManualVideoPlayer({onBack}) {
             </div>
           `;
         })
-        .render(); // Vẽ sơ đồ
+        .render() // Vẽ sơ đồ
+        .fit(); // Center chart ngay khi render xong
+
+      // Thêm event listener cho window resize để auto-center
+      const handleResize = () => {
+        if (chart) {
+          chart.fit();
+        }
+      };
+
+      window.addEventListener('resize', handleResize);
+
+      // Cleanup function
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
     }
   }, []);
-
+  
 
   return (
     <div className={styles.container}>
