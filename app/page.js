@@ -3,8 +3,10 @@
 import { useEffect, useState } from 'react';
 import styles from "./page.module.css";
 import ManualVideoPlayer from './components/ManualVideoPlayer';
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   const [mode, setMode] = useState(null); // null, 'auto', 'manual'
 
   // Danh sách tất cả video để phát tự động
@@ -159,6 +161,15 @@ export default function Home() {
             <div className={styles.buttonContent}>
               <img src="/icons/hand-raised.svg" alt="Manual" width={50}></img>
               {/*<h3>Phát Thủ công</h3>*/}
+            </div>
+          </button>
+
+          <button
+            className={`${styles.modeButton} ${styles.manualButton}`}
+            onClick={() => router.push('/demo')}
+          >
+            <div className={styles.buttonContent}>
+              <h3>Phát Thủ công</h3>
             </div>
           </button>
         </div>

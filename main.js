@@ -1,10 +1,12 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
+const videoHandler = require('./electron-video-handler');
 
 let server = null;
+let videoFolder = null;
 
 function getMimeType(filePath) {
   const ext = path.extname(filePath).toLowerCase();
@@ -24,6 +26,71 @@ function getMimeType(filePath) {
   return mimeTypes[ext] || 'application/octet-stream';
 }
 
+function handleVideoRequest(req, res, pathname) {
+  const videoPath = path.join(videoFolder, pathname.replace('/video/', ''));
+  console.log(`Video request: ${pathname}, File: ${videoPath}`);
+  
+  fs.stat(videoPath, (err, stats) => {
+    if (err) {
+      console.log(`File stat error for ${videoPath}: ${err.message}`);
+      res.writeHead(404);
+      res.end('Not Found');
+      return;
+    }
+    
+    const mimeType = getMimeType(videoPath);
+    const range = req.headers.range;
+    
+    console.log(`File: ${videoPath}, Size: ${stats.size}, MIME: ${mimeType}`);
+    
+    // Handle video streaming with Range requests
+    if (range && mimeType.startsWith('video/')) {
+      console.log(`Streaming video with range: ${range}`);
+      
+      const parts = range.replace(/bytes=/, "").split("-");
+      const start = parseInt(parts[0], 10);
+      const end = parts[1] ? parseInt(parts[1], 10) : stats.size - 1;
+      const chunksize = (end - start) + 1;
+      
+      console.log(`Range: ${start}-${end}/${stats.size}, Chunk: ${chunksize}`);
+      
+      const stream = fs.createReadStream(videoPath, { start, end });
+      
+      res.writeHead(206, {
+        'Content-Range': `bytes ${start}-${end}/${stats.size}`,
+        'Accept-Ranges': 'bytes',
+        'Content-Length': chunksize,
+        'Content-Type': mimeType,
+      });
+      
+      stream.on('error', (streamErr) => {
+        console.log(`Stream error: ${streamErr.message}`);
+        res.end();
+      });
+      
+      stream.pipe(res);
+    } else {
+      // Regular file serving
+      console.log(`Serving static file: ${videoPath}`);
+      
+      const stream = fs.createReadStream(videoPath);
+      
+      res.writeHead(200, {
+        'Content-Type': mimeType,
+        'Content-Length': stats.size,
+        'Accept-Ranges': 'bytes',
+      });
+      
+      stream.on('error', (streamErr) => {
+        console.log(`Stream error: ${streamErr.message}`);
+        res.end();
+      });
+      
+      stream.pipe(res);
+    }
+  });
+}
+
 function createLocalServer() {
   return new Promise((resolve, reject) => {
     const staticPath = path.join(__dirname, 'out');
@@ -39,11 +106,18 @@ function createLocalServer() {
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
       res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Range');
+      res.setHeader('Accept-Ranges', 'bytes');
       
       // Handle OPTIONS requests
       if (req.method === 'OPTIONS') {
         res.writeHead(200);
         res.end();
+        return;
+      }
+      
+      // Handle video file requests from configured folder
+      if (pathname.startsWith('/video/')) {
+        handleVideoRequest(req, res, pathname);
         return;
       }
       
@@ -235,6 +309,51 @@ function createWindow() {
     // win.webContents.openDevTools();
   }
 }
+
+// IPC handlers for video functionality
+ipcMain.handle('select-video-folder', async () => {
+  try {
+    const result = await videoHandler.selectVideoFolder();
+    if (result && !result.canceled && result.filePaths && result.filePaths.length > 0) {
+      videoFolder = result.filePaths[0];
+      console.log(`Selected video folder: ${videoFolder}`);
+    }
+    return result;
+  } catch (error) {
+    console.error('Error in select-video-folder:', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('scan-video-folder', async (event, folderPath) => {
+  try {
+    // Store the folder path for video serving
+    videoFolder = folderPath;
+    console.log(`Video folder set to: ${videoFolder}`);
+    return await videoHandler.scanVideoFolder(folderPath);
+  } catch (error) {
+    console.error('Error in scan-video-folder:', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('validate-video-folder', async (event, folderPath) => {
+  try {
+    return await videoHandler.validateVideoFolder(folderPath);
+  } catch (error) {
+    console.error('Error in validate-video-folder:', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('get-video-info', async (event, videoPath) => {
+  try {
+    return await videoHandler.getVideoInfo(videoPath);
+  } catch (error) {
+    console.error('Error in get-video-info:', error);
+    throw error;
+  }
+});
 
 app.whenReady().then(createWindow);
 
