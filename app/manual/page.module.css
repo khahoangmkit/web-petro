@@ -1,0 +1,44 @@
+.container {
+  background: linear-gradient(45deg, #0A54A8, #F88126);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnPiacom {
+  display: inline-block;
+  padding: 16px 24px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff; /* xanh chữ */
+  background-color: #AEE0FF; /* xanh nền nhạt */
+  border-radius: 12px;
+  border: 8px solid transparent; /* sẽ dùng background-clip cho viền */
+
+  /* Viền có hiệu ứng gradient sáng-trên, đậm-dưới */
+  background-image:
+          linear-gradient(220deg, #188cd3 0%, #155eb2 65%),
+          linear-gradient(194deg, #86c5f5 0%, #134b92 70%); /* lớp viền */
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+
+  /* Bóng đổ phía dưới để tạo hiệu ứng nổi */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btnPiacom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btnPiacom:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+}
