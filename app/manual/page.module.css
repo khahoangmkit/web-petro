@@ -1,10 +1,16 @@
 .container {
-  background: linear-gradient(45deg, #0A54A8, #F88126);
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.parentNode {
+  font-size: 24px!important;
+  padding: 1.5rem 2rem!important;
+
 }
 
 .btnPiacom {
@@ -41,4 +47,24 @@
 .btnPiacom:active {
   transform: translateY(0);
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+.backButton {
+  position: absolute;
+  bottom: 5rem;
+  left: 20px;
+  background: #F88126;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.backButton:hover {
+  background: #fa8934;
+  transform: translateY(-1px);
 }
