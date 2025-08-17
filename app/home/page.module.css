@@ -1,0 +1,157 @@
+.pageHomeScreen {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.container {
+    width: 100%;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.titlePage {
+    color: #fff;
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.buttonContainer {
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 2rem;
+}
+.btnAction {
+    display: inline-block;
+    padding: 1.5rem 2rem;
+    font-family: Arial, sans-serif;
+    /*font-weight: bold;*/
+    font-size: 1.6rem;
+    color: #fff; /* xanh chữ */
+    background-color: #AEE0FF; /* xanh nền nhạt */
+    border-radius: 12px;
+    border: 8px solid transparent; /* sẽ dùng background-clip cho viền */
+
+    /* Viền có hiệu ứng gradient sáng-trên, đậm-dưới */
+    background-image:
+            linear-gradient(220deg, #188cd3 0%, #155eb2 65%),
+            linear-gradient(194deg, #86c5f5 0%, #134b92 70%); /* lớp viền */
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+    /* Bóng đổ phía dưới để tạo hiệu ứng nổi */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    min-width: 30%;
+}
+
+.btnAction:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btnAction:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+}
+.modeButton {
+    background: linear-gradient(135deg, #fcba4e 0%, #f87926 100%);
+    border: none;
+    border-radius: 16px;
+    padding: 20px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(248, 121, 38, 0.3);
+    color: white;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /*min-height: 140px;*/
+}
+
+.modeButton:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(248, 121, 38, 0.4);
+}
+
+.modeButton:active {
+    transform: translateY(-2px);
+}
+
+.autoButton {
+    justify-content: center;
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);
+}
+
+.autoButton:hover {
+    box-shadow: 0 15px 35px rgba(33, 150, 243, 0.4);
+}
+
+.manualButton {
+    justify-content: center;
+
+    background: linear-gradient(135deg, #fcba4e 0%, #F88126 100%);
+    box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);
+}
+
+.manualButton:hover {
+    box-shadow: 0 15px 35px rgba(33, 150, 243, 0.4);
+}
+
+.buttonIcon {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.buttonContent {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.buttonContent h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.buttonContent p {
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.footer {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 30px;
+}
+
+.footer p {
+    color: #888;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.backgroundVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -2;
+}
+

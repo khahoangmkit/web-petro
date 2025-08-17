@@ -5,7 +5,7 @@ import styles from "./ManualScreen.module.css";
 import { dataHome } from "@/app/constants";
 
 
-export default function ManualScreen({screen}) {
+export default function ManualScreen({onBack, screen}) {
 
   const [path, setPath] = useState([dataHome[`${screen}` || 'screen1']]);
   const currentNode = path[path.length - 1];
@@ -29,7 +29,7 @@ export default function ManualScreen({screen}) {
 
   return (
     <div className={styles.container}>
-      <img src="/backgrounds/screen_01.png" alt="anh nen" style={{ width: '100%', height: '100%', position: 'absolute', zIndex: -1}}/>
+      {/*<img src="/backgrounds/screen_01.png" alt="anh nen" style={{ width: '100%', height: '100%', position: 'absolute', zIndex: -1}}/>*/}
       <div className={styles.buttonContainer}>
         {/* Node hiện tại (header) */}
         <button className={`${styles.btnPiacom} ${styles.parentNode}`}>
@@ -56,6 +56,10 @@ export default function ManualScreen({screen}) {
           ← Back
         </button>
       )}
+
+      <button className={styles.backButton} onClick={onBack} style={{ marginBottom: 16, bottom: '2rem' }}>
+        Home
+      </button>
     </div>
   );
 }

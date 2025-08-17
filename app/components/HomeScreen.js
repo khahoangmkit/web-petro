@@ -1,41 +1,17 @@
 'use client';
 
-import styles from "./page.module.css";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import ManualVideoPlayer from "@/app/components/ManualVideoPlayer";
+import styles from "@/app/home/page.module.css";
+import ManualScreen from "@/app/components/ManualScreen";
+import { dataHome } from "@/app/constants";
 
-const videoList = [
-  {
-    name: 'Video 1: Diễn tập PA chữa cháy & CNCH bể C11-K130',
-    path: '/dataSources/1.Chuyen_doi_so/1.Ban Cong nghệ an toàn/1. (Video 1)Diễn tập PA chữa cháy & CNCH bể  C11-K130 (12-9-2021).mp4',
-    folder: 'Ban Công nghệ an toàn'
-  },
-  {
-    name: 'Video 2: Diễn tập UPSC Trần Đầu TKXD Nhà Bè 2019',
-    path: '/dataSources/1.Chuyen_doi_so/1.Ban Cong nghệ an toàn/2. (Video 2)DIEN TAP UPSC TRAN  DAU TKXD NHA BE 2019 - hoan chinh ten nhan vat.mp4',
-    folder: 'Ban Công nghệ an toàn'
-  },
-  {
-    name: '1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng.mp4',
-    path: '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
-    folder: 'Ban Công nghệ Thông tin'
-  },
-  {
-    name: '2.Định danh tài khoản bằng NFC.mp4',
-    path: '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
-    folder: 'Ban Công nghệ Thông tin'
-  },
-  {
-    name: '3.Tài khoản liên kết.mp4',
-    path: '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4',
-    folder: 'Ban Công nghệ Thông tin'
-  }
-];
-
-export default function Home() {
+export default function HomeScreen({screenIndex}) {
   const router = useRouter();
-  const [mode, setMode] = useState(null); // null, 'auto', '[screen]'
+  const [mode, setMode] = useState(null);
+
+  const [data, setData] = useState(dataHome[screenIndex]);
+
 
   // Danh sách tất cả video để phát tự động
   const videoList = [
@@ -139,50 +115,56 @@ export default function Home() {
     loadAndPlayVideo(currentIndex);
   };
 
-  if (mode === '[screen]') {
-    return <ManualVideoPlayer onBack={() => setMode(null)} />;
-  }
-
   return (
-    <div className={styles.page}>
-      {/* Video Background */}
-      <video
-        className={styles.backgroundVideo}
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src="/sources/PLC.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+    <div className={styles.pageHomeScreen}>
+       {/*Video Background*/}
 
-      <div className={styles.overlay}></div>
+      {/*<video*/}
+      {/*  className={styles.backgroundVideo}*/}
+      {/*  autoPlay*/}
+      {/*  muted*/}
+      {/*  loop*/}
+      {/*  playsInline*/}
+      {/*>*/}
+      {/*  <source src="/sources/PLC.mp4" type="video/mp4" />*/}
+      {/*  Your browser does not support the video tag.*/}
+      {/*</video>*/}
 
-      <div className={styles.container}>
+      <img src={data.background} alt="anh nen" style={{ width: '100%', height: '100%', position: 'absolute', zIndex: -1}}/>
 
-        <div className={styles.buttonContainer}>
-          <button
-            className={`${styles.modeButton} ${styles.autoButton}`}
-            onClick={startAutoPlayImmediately}
-          >
-            <div className={styles.buttonContent}>
-              <img src="/icons/auto-renewal.svg" style={{display: "inline-block"}} alt="Auto" width={50}></img>
-              {/*<h3>Phát tự động</h3>*/}
+      {
+        mode === 'manualMode' ?
+          <ManualScreen
+            onBack={() => setMode(null)}
+            screen={screenIndex} />
+          :
+          <div className={styles.container}>
+            <h1 className={styles.titlePage} dangerouslySetInnerHTML={{ __html: data.title }} />
+
+            <div className={styles.buttonContainer}>
+              <button
+                className={`${styles.btnAction}`}
+                onClick={startAutoPlayImmediately}
+              >
+                <div className={styles.buttonContent}>
+                  {/*<img src="/icons/auto-renewal.svg" style={{display: "inline-block"}} alt="Auto" width={50}></img>*/}
+                  <h3>Auto</h3>
+                </div>
+              </button>
+
+              <button
+                className={`${styles.btnAction} `}
+                onClick={() => setMode('manualMode')}
+              >
+                <div className={styles.buttonContent}>
+                  {/*<img src="/icons/hand-raised.svg" alt="Manual" width={50}></img>*/}
+                  <h3>Manual</h3>
+                </div>
+              </button>
             </div>
-          </button>
+          </div>
+      }
 
-          <button
-            className={`${styles.modeButton} ${styles.manualButton}`}
-            onClick={() => setMode('[screen]')}
-          >
-            <div className={styles.buttonContent}>
-              <img src="/icons/hand-raised.svg" alt="Manual" width={50}></img>
-              {/*<h3>Phát Thủ công</h3>*/}
-            </div>
-          </button>
-        </div>
-      </div>
     </div>
   );
 }
