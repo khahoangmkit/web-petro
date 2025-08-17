@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import styles from "@/app/home/page.module.css";
+import styles from "./HomeScreen.module.css";
 import ManualScreen from "@/app/components/ManualScreen";
 import { dataHome } from "@/app/constants";
 
@@ -11,26 +11,6 @@ export default function HomeScreen({screenIndex}) {
   const [mode, setMode] = useState(null);
 
   const [data, setData] = useState(dataHome[screenIndex]);
-
-
-  // Danh sách tất cả video để phát tự động
-  const videoList = [
-    {
-      name: '1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng.mp4',
-      path: '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
-      folder: 'Ban Công nghệ Thông tin'
-    },
-    {
-      name: '2.Định danh tài khoản bằng NFC.mp4',
-      path: '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
-      folder: 'Ban Công nghệ Thông tin'
-    },
-    {
-      name: '3.Tài khoản liên kết.mp4',
-      path: '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4',
-      folder: 'Ban Công nghệ Thông tin'
-    }
-  ];
 
   // Function để phát video tự động ngay lập tức
   const startAutoPlayImmediately = () => {
@@ -54,13 +34,12 @@ export default function HomeScreen({screenIndex}) {
     };
 
     const loadAndPlayVideo = (videoIndex) => {
-      const video = videoList[videoIndex];
-      if (!video || !videoElement) return;
+      const videoPath = data.videoList[videoIndex];
+      if (!videoPath || !videoElement) return;
 
-      console.log(`Loading video ${videoIndex + 1}: ${video.name}`);
 
       // Chỉ thay đổi src, không tạo element mới
-      videoElement.src = video.path;
+      videoElement.src = videoPath;
 
       videoElement.onloadeddata = () => {
         videoElement.play().then(() => {
@@ -73,16 +52,16 @@ export default function HomeScreen({screenIndex}) {
         }).catch(error => {
           console.error('Error playing video:', error);
           // Nếu lỗi, thử video tiếp theo
-          currentIndex = (currentIndex + 1) % videoList.length;
+          currentIndex = (currentIndex + 1) % data.videoList.length;
           setTimeout(() => loadAndPlayVideo(currentIndex), 500);
         });
       };
 
       // Xử lý lỗi video
       videoElement.onerror = () => {
-        console.error('Video load error:', video.path);
+        console.error('Video load error:', videoPath);
         // Nếu lỗi, thử video tiếp theo
-        currentIndex = (currentIndex + 1) % videoList.length;
+        currentIndex = (currentIndex + 1) % data.videoList.length;
         setTimeout(() => loadAndPlayVideo(currentIndex), 500);
       };
     };
@@ -92,7 +71,7 @@ export default function HomeScreen({screenIndex}) {
 
     // Khi video kết thúc, chuyển sang video tiếp theo
     videoElement.onended = () => {
-      currentIndex = (currentIndex + 1) % videoList.length; // Lặp lại từ đầu
+      currentIndex = (currentIndex + 1) % data.videoList.length; // Lặp lại từ đầu
       console.log(`Video ended, switching to video ${currentIndex + 1}`);
       // Chuyển video ngay lập tức trên cùng element
       loadAndPlayVideo(currentIndex);

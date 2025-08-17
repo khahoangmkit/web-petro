@@ -1,8 +1,13 @@
 export const dataHome = {
   screen1: {
-    title: `Chuyển đổi số <br/> Ban Công nghệ an toàn và Ban Công nghệ thông tin`,
+    title: `Chuyển đổi số <br/> Ban Công nghệ an toàn,<br/> Ban Công nghệ thông tin`,
     background: '/backgrounds/screen_01.png',
     name: 'Chuyển đổi số',
+    videoList: [
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4'
+    ],
     path: '#',
     children: [
       {
@@ -10,12 +15,12 @@ export const dataHome = {
         path: '#',
         children: [
           {
-            name: 'Video 1',
-            path: '#'
+            name: 'Diễn tập PA chữa cháy',
+            path: '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4'
           },
           {
-            name: 'Video 2',
-            path: '#'
+            name: 'Diễn tập UPSC tràn dầu',
+            path: '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4'
           }
         ]
       },
@@ -24,13 +29,17 @@ export const dataHome = {
         path: '#',
         children: [
           {
-            name: 'Video 1',
+            name: 'Quản lý đơn hàng',
             path: '#'
           },
           {
-            name: 'Video 2',
+            name: 'Định danh tài khoản bằng NFC',
             path: '#'
-          }
+          },
+          {
+            name: 'Tài khoản liên kết',
+            path: '#'
+          },
         ]
       }
     ]
@@ -38,6 +47,11 @@ export const dataHome = {
   screen23: {
     title: 'Công ty CP Nhiên liệu bay Petrolimex',
     background: '/backgrounds/screen_02.png',
+    videoList: [
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4'
+    ],
     name: 'Petrolimex Aviation',
     path: '#',
     children: [
@@ -68,6 +82,11 @@ export const dataHome = {
   screen4: {
     title: 'Tổng Công Ty Vận Tải Thủy Petrolimex',
     background: '/backgrounds/screen_03.png',
+    videoList: [
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4'
+    ],
     name: 'PG Tanker',
     path: '#',
     children: [
@@ -107,6 +126,11 @@ export const dataHome = {
   screen5: {
     title: 'Công ty Cổ phần Tin học Viễn thông Petrolimex',
     background: '/backgrounds/screen_04.png',
+    videoList: [
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4'
+    ],
     name: 'Petrolimex Information Technology and Telecommunication Joint-Stock Company',
     path: '#',
     children: [
@@ -153,6 +177,11 @@ export const dataHome = {
   screen67: {
     title: 'Tổng Công ty Hóa dầu Petrolimex(PLC)',
     background: '/backgrounds/screen_06.png',
+    videoList: [
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4'
+    ],
     name: 'Tổng Công ty Hóa dầu Petrolimex(PLC)',
     path: '#',
     children: [
@@ -212,6 +241,11 @@ export const dataHome = {
   screen8: {
     title: 'Tổng Công ty CP Gas Petrolimex (PGC - PGas)',
     background: '/backgrounds/screen_05.png',
+    videoList: [
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4'
+    ],
     name: 'Tổng Công ty CP Gas Petrolimex (PGC - PGas)',
     path: '#',
     children: [
@@ -233,6 +267,11 @@ export const dataHome = {
   screen9: {
     title: 'Công ty CP Thiết bị Xăng dầu Petrolimex (PECO)',
     background: '/backgrounds/screen_06.png',
+    videoList: [
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4'
+    ],
     name: 'Công ty CP Thiết bị Xăng dầu Petrolimex (PECO)',
     path: '#',
     children: [
