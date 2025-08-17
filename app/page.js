@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
-  const [mode, setMode] = useState(null); // null, 'auto', 'manual'
+  const [mode, setMode] = useState(null); // null, 'auto', '[screen]'
 
   // Danh sách tất cả video để phát tự động
   const videoList = [
@@ -121,7 +121,7 @@ export default function Home() {
     loadAndPlayVideo(currentIndex);
   };
 
-  if (mode === 'manual') {
+  if (mode === '[screen]') {
     return <ManualVideoPlayer onBack={() => setMode(null)} />;
   }
 
@@ -156,7 +156,7 @@ export default function Home() {
 
           <button 
             className={`${styles.modeButton} ${styles.manualButton}`}
-            onClick={() => setMode('manual')}
+            onClick={() => setMode('[screen]')}
           >
             <div className={styles.buttonContent}>
               <img src="/icons/hand-raised.svg" alt="Manual" width={50}></img>

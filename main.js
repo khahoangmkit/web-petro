@@ -288,7 +288,7 @@ function createWindow() {
       
       // Log when page finishes loading
       win.webContents.once('did-finish-load', () => {
-        console.log('Page finished loading');
+        console.log('Screen finished loading');
       });
       
       // Log any console messages from the renderer
