@@ -3,11 +3,10 @@
 import { useEffect, useState } from 'react';
 import styles from "./page.module.css";
 import ManualVideoPlayer from './components/ManualVideoPlayer';
-import { useRouter } from "next/navigation";
+import HomeScreen from './components/HomeScreen';
 
 export default function Home() {
-  const router = useRouter();
-  const [mode, setMode] = useState(null); // null, 'auto', '[screen]'
+  const [mode, setMode] = useState(null); // null, 'auto', '[screen]', 'screen1'
 
   // Danh sách tất cả video để phát tự động
   const videoList = [
@@ -125,6 +124,10 @@ export default function Home() {
     return <ManualVideoPlayer onBack={() => setMode(null)} />;
   }
 
+  if (mode === 'screen1') {
+    return <HomeScreen screenIndex="screen1" onBack={() => setMode(null)} />;
+  }
+
   return (
     <div className={styles.page}>
       {/* Video Background */}
@@ -166,10 +169,10 @@ export default function Home() {
 
           <button
             className={`${styles.modeButton} ${styles.manualButton}`}
-            onClick={() => router.push('/demo')}
+            onClick={() => setMode('screen1')}
           >
             <div className={styles.buttonContent}>
-              <h3>Phát Thủ công</h3>
+              <h3>Screen 1</h3>
             </div>
           </button>
         </div>
