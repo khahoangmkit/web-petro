@@ -50,9 +50,8 @@ export const dataHome = {
     title: 'Công ty CP Nhiên liệu bay Petrolimex',
     background: '/backgrounds/screen_02.png',
     videoList: [
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4'
+      '/dataSources/2_3_Nhien_lieu_bay_PA/2.Video_15_nam_thanh_lap_PA.mp4',
+      '/dataSources/2_3_Nhien_lieu_bay_PA/4.Quang_cao_TVC_QC.mp4',
     ],
     name: 'Petrolimex Aviation',
     path: '#',
@@ -63,7 +62,7 @@ export const dataHome = {
       },
       {
         name: 'Video 15 năm thành lập',
-        path: '#',
+        path: '/dataSources/2_3_Nhien_lieu_bay_PA/2.Video_15_nam_thanh_lap_PA.mp4',
       },
       {
         name: 'Video về chuyến bay',
@@ -71,7 +70,7 @@ export const dataHome = {
       },
       {
         name: 'Video giới thiệu về công tác tra nạp',
-        path: '#',
+        path: '/dataSources/2_3_Nhien_lieu_bay_PA/4.Quang_cao_TVC_QC.mp4',
       },
       {
         name: 'Video giới thiệu về mẫu xe tra nạp',
@@ -85,9 +84,8 @@ export const dataHome = {
     title: 'Tổng Công Ty Vận Tải Thủy Petrolimex',
     background: '/backgrounds/screen_03.png',
     videoList: [
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4'
+      '/dataSources/4.TCT_van_tai_thuy/1.PGTANKER-CLip_hoi_nghi.mp4',
+      '/dataSources/4.TCT_van_tai_thuy/2.Video_tong_ket_hoi_nghi_khach_hang.mp4'
     ],
     name: 'PG Tanker',
     path: '#',
@@ -101,19 +99,19 @@ export const dataHome = {
         path: '#'
       },
       {
-        name: 'Ảnh Hội nghị đào tạo',
-        path: '#'
+        name: 'Hội nghị đào tạo',
+        path: '/dataSources/4.TCT_van_tai_thuy/1.PGTANKER-CLip_hoi_nghi.mp4'
       },
       {
         name: 'Clip của Tổng công ty',
         path: '#',
         children: [
           {
-            name: 'Clip 1',
-            path: '#'
+            name: 'Hội nghị khách hàng năm 2024',
+            path: '/dataSources/4.TCT_van_tai_thuy/2.Video_tong_ket_hoi_nghi_khach_hang.mp4'
           },
           {
-            name: 'Clip 2',
+            name: 'Khóa đào tạo An toàn, an ninh mạng và Chuyển đổi số',
             path: '#'
           }
         ]
@@ -129,48 +127,54 @@ export const dataHome = {
     title: 'Công ty Cổ phần Tin học Viễn thông Petrolimex',
     background: '/backgrounds/screen_04.png',
     videoList: [
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4'
+      '/dataSources/5.Cty_cp_vien_thong/01.Gioi_thieu_PIACOM_TV.mp4',
+      '/dataSources/5.Cty_cp_vien_thong/02.PIACOM introduction_Eng.mp4',
+      '/dataSources/5.Cty_cp_vien_thong/03.PIA_Gioi_thieu_phan_mem_EGAS.mp4',
+      '/dataSources/5.Cty_cp_vien_thong/04.PIA_Gioi_thieu_TDH_do_bon_be.mp4',
+      '/dataSources/5.Cty_cp_vien_thong/05.PIA_Co_che_do_be&thu_nhan_tin_hieu_cot_bom_CHXD.mp4',
+      '/dataSources/5.Cty_cp_vien_thong/06.PIA_QR_code_dong+HDDT_quang_cao.mp4',
+      '/dataSources/5.Cty_cp_vien_thong/08.PIA_GT_TDH_Kho_TAS.mp4',
+      '/dataSources/5.Cty_cp_vien_thong/09.PIA_GT_PIACOM_ERP.mp4',
+      '/dataSources/5.Cty_cp_vien_thong/10.PIA_TDH_Kho_Nha_be_Case_study.mp4',
     ],
     name: 'Petrolimex Information Technology and Telecommunication Joint-Stock Company',
     path: '#',
     children: [
       {
         name: 'Video giới thiệu về PIACOM',
-        path: '#'
+        path: '/dataSources/5.Cty_cp_vien_thong/01.Gioi_thieu_PIACOM_TV.mp4'
       },
       {
         name: 'Video PIACOM Introduction',
-        path: '#'
+        path: '/dataSources/5.Cty_cp_vien_thong/02.PIACOM introduction_Eng.mp4'
       },
       {
         name: 'Video giới thiệu phần mềm EGAS',
-        path: '#'
+        path: '/dataSources/5.Cty_cp_vien_thong/03.PIA_Gioi_thieu_phan_mem_EGAS.mp4'
       },
       {
         name: 'Video giới thiệu TĐH đo bồn bể',
-        path: '#'
+        path: '/dataSources/5.Cty_cp_vien_thong/04.PIA_Gioi_thieu_TDH_do_bon_be.mp4'
       },
       {
         name: 'Video cơ chế TĐH đo bể',
-        path: '#'
+        path: '/dataSources/5.Cty_cp_vien_thong/05.PIA_Co_che_do_be&thu_nhan_tin_hieu_cot_bom_CHXD.mp4'
       },
       {
         name: 'Video PIA Code động',
-        path: '#'
+        path: '/dataSources/5.Cty_cp_vien_thong/06.PIA_QR_code_dong+HDDT_quang_cao.mp4'
       },
       {
         name: 'Video giới thiệu TĐH kho',
-        path: '#'
+        path: '/dataSources/5.Cty_cp_vien_thong/08.PIA_GT_TDH_Kho_TAS.mp4'
       },
       {
         name: 'Video giới thiệu Piacom erp',
-        path: '#'
+        path: '/dataSources/5.Cty_cp_vien_thong/09.PIA_GT_PIACOM_ERP.mp4'
       },
       {
         name: 'Video TĐH kho nhà bè case study',
-        path: '#'
+        path: '/dataSources/5.Cty_cp_vien_thong/10.PIA_TDH_Kho_Nha_be_Case_study.mp4'
       },
 
     ]
@@ -180,9 +184,11 @@ export const dataHome = {
     title: 'Tổng Công ty Hóa dầu Petrolimex(PLC)',
     background: '/backgrounds/screen_06.png',
     videoList: [
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4'
+      '/dataSources/67.Cty_CP_Petrolimex/PHIM_TCT_PETROLIMEX.mp4',
+      '/dataSources/67.Cty_CP_Petrolimex/30_nam_thanh_lap_Petrolimex.mp4',
+      '/dataSources/67.Cty_CP_Petrolimex/Powersyn.mp4',
+      '/dataSources/67.Cty_CP_Petrolimex/Scooter_30s_final.mp4',
+      '/dataSources/67.Cty_CP_Petrolimex/PLC Cater CI-4 30s_final chuan.mp4'
     ],
     name: 'Tổng Công ty Hóa dầu Petrolimex(PLC)',
     path: '#',
@@ -193,15 +199,29 @@ export const dataHome = {
         children: [
           {
             name: 'Video quảng cáo sản phẩm',
-            path: '#'
+            path: '#',
+            children: [
+              {
+                name: 'PowerSyn',
+                path: '/dataSources/67.Cty_CP_Petrolimex/Powersyn.mp4'
+              },
+              {
+                name: 'Racer Scooter',
+                path: '/dataSources/67.Cty_CP_Petrolimex/Scooter_30s_final.mp4'
+              },
+              {
+                name: 'Cater CI-4',
+                path: '/dataSources/67.Cty_CP_Petrolimex/PLC Cater CI-4 30s_final chuan.mp4'
+              }
+            ]
           },
           {
             name: 'Video năng lực TCT PLC',
-            path: '#'
+            path: '/dataSources/67.Cty_CP_Petrolimex/PHIM_TCT_PETROLIMEX.mp4'
           },
           {
             name: 'Video 30 năm thành lập PLC',
-            path: '#'
+            path: '/dataSources/67.Cty_CP_Petrolimex/30_nam_thanh_lap_Petrolimex.mp4'
           },
           {
             name: 'Danh mục sản phẩm Dầu mỡ nhờn',
@@ -219,11 +239,11 @@ export const dataHome = {
           },
           {
             name: 'Video giới thiệu Công ty',
-            path: '#'
+            path: '/dataSources/67.Cty_CP_Petrolimex/PETROLIMEX_NhuaDuong.mp4'
           },
           {
             name: 'Video 15 năm thành lập TCT',
-            path: '#'
+            path: '/dataSources/67.Cty_CP_Petrolimex/15nam_nhuaduongfinal.mp4'
           }
         ]
       },
@@ -257,11 +277,11 @@ export const dataHome = {
       },
       {
         name: 'Gas mang nguồn năng lượng sạch',
-        path: '#'
+        path: '/dataSources/8.Tổng công ty Gas Petrolimex/Gas_mang_nguon_nang_luong_sach.mp4'
       },
       {
         name: 'Hình ảnh sản phẩm Gas',
-        path: '#'
+        path: '/dataSources/8.Tổng công ty Gas Petrolimex/Hinh_anh_GAS.mp4'
       }
     ]
   },

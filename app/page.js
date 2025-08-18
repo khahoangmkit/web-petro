@@ -5,8 +5,20 @@ import styles from "./page.module.css";
 import ManualVideoPlayer from './components/ManualVideoPlayer';
 import HomeScreen from './components/HomeScreen';
 
+
+
 export default function Home() {
   const [mode, setMode] = useState(null); // null, 'auto', '[screen]', 'screen1'
+
+  const listScreen = [
+    { name: 'Screen 1', path: 'screen1' },
+    { name: 'Screen 2 + 3', path: 'screen23' },
+    { name: 'Screen 4', path: 'screen4' },
+    { name: 'Screen 5', path: 'screen5' },
+    { name: 'Screen 6 + 7', path: 'screen67' },
+    { name: 'Screen 8', path: 'screen8' },
+    { name: 'Screen 9', path: 'screen9' },
+    ];
 
   // Danh sách tất cả video để phát tự động
   const videoList = [
@@ -125,58 +137,45 @@ export default function Home() {
     return <ManualVideoPlayer onBack={() => setMode(null)} />;
   }
 
-  if (mode === 'screen1') {
-    return <HomeScreen screenIndex="screen1" onBack={() => setMode(null)} />;
+  if (mode !== null) {
+    return <HomeScreen screenIndex={mode} onBack={() => setMode(null)} />;
   }
 
   return (
     <div className={styles.page}>
       {/* Video Background */}
-      <video 
-        className={styles.backgroundVideo}
-        autoPlay 
-        muted 
-        loop 
-        playsInline
-        preload="metadata"
-      >
-        <source src="/sources/PLC.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/*<video */}
+      {/*  className={styles.backgroundVideo}*/}
+      {/*  autoPlay */}
+      {/*  muted */}
+      {/*  loop */}
+      {/*  playsInline*/}
+      {/*  preload="metadata"*/}
+      {/*>*/}
+      {/*  <source src="/sources/PLC.mp4" type="video/mp4" />*/}
+      {/*  Your browser does not support the video tag.*/}
+      {/*</video>*/}
+
+      <img src="/background_petro.jpg" className={styles.backgroundVideo} alt="image background"/>
 
       <div className={styles.overlay}></div>
       
       <div className={styles.container}>
 
         <div className={styles.buttonContainer}>
-          <button 
-            className={`${styles.modeButton} ${styles.autoButton}`}
-            onClick={startAutoPlayImmediately}
-          >
-            <div className={styles.buttonContent}>
-              <img src="/icons/auto-renewal.svg" style={{display: "inline-block"}} alt="Auto" width={50}></img>
-              {/*<h3>Phát tự động</h3>*/}
-            </div>
-          </button>
-
-          <button 
-            className={`${styles.modeButton} ${styles.manualButton}`}
-            onClick={() => setMode('[screen]')}
-          >
-            <div className={styles.buttonContent}>
-              <img src="/icons/hand-raised.svg" alt="Manual" width={50}></img>
-              {/*<h3>Phát Thủ công</h3>*/}
-            </div>
-          </button>
-
-          <button
-            className={`${styles.modeButton} ${styles.manualButton}`}
-            onClick={() => setMode('screen1')}
-          >
-            <div className={styles.buttonContent}>
-              <h3>Screen 1</h3>
-            </div>
-          </button>
+          {
+            listScreen.map((screen, index) => (
+              <button
+                key={index}
+                className={`${styles.modeButton} ${screen === mode ? styles.activeButton : ''}`}
+                onClick={() => setMode(screen.path)}
+              >
+                <div className={styles.buttonContent}>
+                  <h3>{screen.name}</h3>
+                </div>
+              </button>
+            ))
+          }
         </div>
       </div>
     </div>

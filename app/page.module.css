@@ -9,7 +9,7 @@
   /*--button-secondary-hover: #f2f2f2;*/
 
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   min-height: 100vh;
   padding: 20px;
@@ -52,8 +52,11 @@
 }
 
 .buttonContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 30px;
 }
 
@@ -61,15 +64,17 @@
   background: linear-gradient(135deg, #fcba4e 0%, #f87926 100%);
   border: none;
   border-radius: 16px;
-  padding: 20px 20px;
+  padding: 1.2rem 1.5rem;
+  text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 8px 25px rgba(248, 121, 38, 0.3);
   color: white;
-  text-align: left;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 20px;
+  min-width: 30%;
   /*min-height: 140px;*/
 }
 
