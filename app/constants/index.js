@@ -4,9 +4,11 @@ export const dataHome = {
     background: '/backgrounds/screen_01.png',
     name: 'Chuyển đổi số',
     videoList: [
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4',
-      '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/3.Tài khoản liên kết.mp4'
+      '/dataSources/1.Chuyen_doi_so/1.BanCongNgheAnToan/VideoDienTapPAChuaChay.mp4',
+      '/dataSources/1.Chuyen_doi_so/1.BanCongNgheAnToan/VideoDienTapUPSCTranDau.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.BanCNTT/1.QuanLyDonHang.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.BanCNTT/2.DinhDangTaiKhoanNFC.mp4',
+      '/dataSources/1.Chuyen_doi_so/2.BanCNTT/3.TaiKhoanLienKet.mp4'
     ],
     path: '#',
     children: [
@@ -16,11 +18,11 @@ export const dataHome = {
         children: [
           {
             name: 'Diễn tập PA chữa cháy',
-            path: '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4'
+            path: '/dataSources/1.Chuyen_doi_so/1.BanCongNgheAnToan/VideoDienTapPAChuaChay.mp4'
           },
           {
             name: 'Diễn tập UPSC tràn dầu',
-            path: '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/2.Định danh tài khoản bằng NFC.mp4'
+            path: '/dataSources/1.Chuyen_doi_so/1.BanCongNgheAnToan/VideoDienTapUPSCTranDau.mp4'
           }
         ]
       },
@@ -30,15 +32,15 @@ export const dataHome = {
         children: [
           {
             name: 'Quản lý đơn hàng',
-            path: '#'
+            path: '/dataSources/1.Chuyen_doi_so/2.BanCNTT/1.QuanLyDonHang.mp4'
           },
           {
             name: 'Định danh tài khoản bằng NFC',
-            path: '#'
+            path: '/dataSources/1.Chuyen_doi_so/2.BanCNTT/2.DinhDangTaiKhoanNFC.mp4'
           },
           {
             name: 'Tài khoản liên kết',
-            path: '#'
+            path: '/dataSources/1.Chuyen_doi_so/2.BanCNTT/3.TaiKhoanLienKet.mp4'
           },
         ]
       }

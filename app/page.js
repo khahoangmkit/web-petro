@@ -45,6 +45,7 @@ export default function Home() {
     const createVideoElement = () => {
       videoElement = document.createElement('video');
       videoElement.controls = true;
+      videoElement.preload = 'metadata'; // Only preload metadata, not full video
       videoElement.style.width = '100vw';
       videoElement.style.height = '100vh';
       videoElement.style.backgroundColor = '#000';
@@ -137,6 +138,7 @@ export default function Home() {
         muted 
         loop 
         playsInline
+        preload="metadata"
       >
         <source src="/sources/PLC.mp4" type="video/mp4" />
         Your browser does not support the video tag.
