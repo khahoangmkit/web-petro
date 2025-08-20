@@ -1,6 +1,6 @@
 export const dataHome = {
   screen1: {
-    title: `Chuyển đổi số <br/> Ban Công nghệ an toàn,<br/> Ban Công nghệ thông tin`,
+    title: `Ban Công nghệ an toàn <br/> và Ban Công nghệ thông tin`,
     background: '/backgrounds/screen_01.png',
     name: 'Chuyển đổi số',
     videoList: [
@@ -50,7 +50,9 @@ export const dataHome = {
     title: 'Công ty CP Nhiên liệu bay Petrolimex',
     background: '/backgrounds/screen_02.png',
     videoList: [
+      '/dataSources/2_3_Nhien_lieu_bay_PA/hinh_anh_tra_nap_PA.mp4',
       '/dataSources/2_3_Nhien_lieu_bay_PA/2.Video_15_nam_thanh_lap_PA.mp4',
+      '/dataSources/2_3_Nhien_lieu_bay_PA/3.Chuyen_tra_nap_dau_tien.mp4',
       '/dataSources/2_3_Nhien_lieu_bay_PA/4.Quang_cao_TVC_QC.mp4',
     ],
     name: 'Petrolimex Aviation',
@@ -58,7 +60,7 @@ export const dataHome = {
     children: [
       {
         name: 'Hình ảnh tra nạp',
-        path: '#',
+        path: '/dataSources/2_3_Nhien_lieu_bay_PA/hinh_anh_tra_nap_PA.mp4',
       },
       {
         name: 'Video 15 năm thành lập',
@@ -66,16 +68,16 @@ export const dataHome = {
       },
       {
         name: 'Video về chuyến bay',
-        path: '#',
+        path: '/dataSources/2_3_Nhien_lieu_bay_PA/3.Chuyen_tra_nap_dau_tien.mp4',
       },
       {
         name: 'Video giới thiệu về công tác tra nạp',
         path: '/dataSources/2_3_Nhien_lieu_bay_PA/4.Quang_cao_TVC_QC.mp4',
       },
-      {
-        name: 'Video giới thiệu về mẫu xe tra nạp',
-        path: '#',
-      }
+      // {
+      //   name: 'Video giới thiệu về mẫu xe tra nạp',
+      //   path: '#',
+      // }
     ]
   },
 
@@ -188,7 +190,8 @@ export const dataHome = {
       '/dataSources/67.Cty_CP_Petrolimex/30_nam_thanh_lap_Petrolimex.mp4',
       '/dataSources/67.Cty_CP_Petrolimex/Powersyn.mp4',
       '/dataSources/67.Cty_CP_Petrolimex/Scooter_30s_final.mp4',
-      '/dataSources/67.Cty_CP_Petrolimex/PLC Cater CI-4 30s_final chuan.mp4'
+      '/dataSources/67.Cty_CP_Petrolimex/PLC Cater CI-4 30s_final chuan.mp4',
+      '/dataSources/67.Cty_CP_Petrolimex/san_pham_Dau_mau_nhon.mp4'
     ],
     name: 'Tổng Công ty Hóa dầu Petrolimex(PLC)',
     path: '#',
@@ -225,7 +228,7 @@ export const dataHome = {
           },
           {
             name: 'Danh mục sản phẩm Dầu mỡ nhờn',
-            path: '#'
+            path: '/dataSources/67.Cty_CP_Petrolimex/san_pham_Dau_mau_nhon.mp4'
           }
         ]
       },
@@ -253,7 +256,7 @@ export const dataHome = {
         children: [
           {
             name: 'Sản phẩm hóa chất',
-            path: '#'
+            path: '/dataSources/67.Cty_CP_Petrolimex/hoa_chat.mp4'
           }
         ]
       }
