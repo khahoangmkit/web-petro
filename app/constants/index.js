@@ -158,7 +158,7 @@ export const dataHome = {
 
   screen67: {
     title: 'Tổng Công ty Hóa dầu Petrolimex(PLC)',
-    background: '/backgrounds/screen_06.png',
+    background: '/backgrounds/BG_man67.jpg',
     videoList: [
       '/dataSources/67.Cty_CP_Petrolimex/PHIM_TCT_PETROLIMEX.mp4',
       '/dataSources/67.Cty_CP_Petrolimex/30_nam_thanh_lap_Petrolimex.mp4',
