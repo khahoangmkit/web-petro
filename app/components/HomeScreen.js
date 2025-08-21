@@ -8,6 +8,7 @@ import { dataHome } from "@/app/constants";
 
 export default function HomeScreen({screenIndex}) {
   const router = useRouter();
+  console.log(screenIndex, '----sd-ds-sd-');
   const [mode, setMode] = useState(null);
 
   const [data, setData] = useState(dataHome[screenIndex]);
@@ -95,7 +96,7 @@ export default function HomeScreen({screenIndex}) {
   };
 
   return (
-    <div className={styles.pageHomeScreen}>
+    <div className={`${styles.pageHomeScreen} ${screenIndex === 'screen1' ? styles.screen1 : ''}`}>
        {/*Video Background*/}
 
       {/*<video*/}
