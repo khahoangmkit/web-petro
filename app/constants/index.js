@@ -236,13 +236,13 @@ export const dataHome = {
   },
 
   screen8: {
-    title: 'Tổng Công ty CP Gas Petrolimex (PGC - PGas)',
+    title: 'TỔNG CÔNG TY GAS PETROLIMEX',
     background: '/backgrounds/screen_05.png',
     videoList: [
       '/dataSources/8.Tổng công ty Gas Petrolimex/Gas_mang_nguon_nang_luong_sach.mp4',
       '/dataSources/8.Tổng công ty Gas Petrolimex/Hinh_anh_GAS.mp4',
     ],
-    name: 'Tổng Công ty CP Gas Petrolimex (PGC - PGas)',
+    name: 'TỔNG CÔNG TY GAS PETROLIMEX',
     path: '#',
     children: [
       {

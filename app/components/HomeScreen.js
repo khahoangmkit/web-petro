@@ -119,7 +119,7 @@ export default function HomeScreen({screenIndex}) {
             screen={screenIndex} />
           :
           <div className={styles.container}>
-            <h1 className={styles.titlePage} dangerouslySetInnerHTML={{ __html: data.title }} />
+            <h1 className={`${styles.titlePage} ${screenIndex === 'screen1' ? styles.titleCenter : ''}`} dangerouslySetInnerHTML={{ __html: data.title }} />
 
             <div className={styles.buttonContainer}>
               <button

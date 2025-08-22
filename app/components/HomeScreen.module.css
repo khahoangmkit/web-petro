@@ -7,7 +7,6 @@
 }
 
 .screen1 {
-    width: 80vw;
     position: relative;
     margin: 0 auto;
 }
@@ -25,6 +24,9 @@
     font-size: 4rem;
     font-weight: 700;
     text-transform: uppercase;
+}
+.titleCenter {
+    text-align: center!important;
 }
 
 .buttonContainer {
