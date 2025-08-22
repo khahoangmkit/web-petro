@@ -60,7 +60,12 @@ export default function ManualScreen({onBack, screen}) {
 
     // Khi video kết thúc, chuyển sang video tiếp theo
     videoElement.onended = () => {
-      handleFullscreenChange();
+      if (document.fullscreenElement) {
+        videoElement.currentTime = 0;
+        videoElement.play();
+      } else {
+        handleFullscreenChange();
+      }
     };
 
     // Xử lý thoát fullscreen
