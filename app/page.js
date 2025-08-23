@@ -1,29 +1,40 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from "./page.module.css";
-import AutoVideoPlayer from './components/AutoVideoPlayer';
-import ManualVideoPlayer from './components/ManualVideoPlayer';
+import HomeScreen from './components/HomeScreen';
+
+
 
 export default function Home() {
-  const [mode, setMode] = useState(null); // null, 'auto', 'manual'
+  const [mode, setMode] = useState(null); // null, 'auto', '[screen]', 'screen1'
+
+  const listScreen = [
+    { name: 'Screen 1', path: 'screen1' },
+    { name: 'Screen 2 + 3', path: 'screen23' },
+    { name: 'Screen 4', path: 'screen4' },
+    { name: 'Screen 5', path: 'screen5' },
+    { name: 'Screen 6 + 7', path: 'screen67' },
+    { name: 'Screen 8', path: 'screen8' },
+    { name: 'Screen 9', path: 'screen9' },
+    ];
 
   // Danh sách tất cả video để phát tự động
   const videoList = [
-    {
-      name: 'Video 1: Diễn tập PA chữa cháy & CNCH bể C11-K130',
-      path: '/dataSources/1.Chuyen_doi_so/1.Ban Cong nghệ an toàn/1. (Video 1)Diễn tập PA chữa cháy & CNCH bể  C11-K130 (12-9-2021).mp4',
-      folder: 'Ban Công nghệ an toàn'
-    },
-    {
-      name: 'Video 2: Diễn tập UPSC Trần Đầu TKXD Nhà Bè 2019',
-      path: '/dataSources/1.Chuyen_doi_so/1.Ban Cong nghệ an toàn/2. (Video 2)DIEN TAP UPSC TRAN  DAU TKXD NHA BE 2019 - hoan chinh ten nhan vat.mp4',
-      folder: 'Ban Công nghệ an toàn'
-    },
+    // {
+    //   name: 'Video 1: Diễn tập PA chữa cháy & CNCH bể C11-K130',
+    //   path: '/dataSources/1.Chuyen_doi_so/1.Ban Cong nghệ an toàn/1. (Video 1)Diễn tập PA chữa cháy & CNCH bể  C11-K130 (12-9-2021).mp4',
+    //   folder: 'Ban Công nghệ an toàn'
+    // },
+    // {
+    //   name: 'Video 2: Diễn tập UPSC Trần Đầu TKXD Nhà Bè 2019',
+    //   path: '/dataSources/1.Chuyen_doi_so/1.Ban Cong nghệ an toàn/2. (Video 2)DIEN TAP UPSC TRAN  DAU TKXD NHA BE 2019 - hoan chinh ten nhan vat.mp4',
+    //   folder: 'Ban Công nghệ an toàn'
+    // },
     {
       name: '1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng.mp4',
       path: '/dataSources/1.Chuyen_doi_so/2.Ban Cong nghệ Thông tin/1.Quản lý đơn hàng-Cửa hàng yêu cầu tiếp tục giao hàng - Copy.mp4',
-      folder: 'Ban Cong nghệ Thông tin'
+      folder: 'Ban Công nghệ Thông tin'
     },
     {
       name: '2.Định danh tài khoản bằng NFC.mp4',
@@ -45,6 +56,7 @@ export default function Home() {
     const createVideoElement = () => {
       videoElement = document.createElement('video');
       videoElement.controls = true;
+      videoElement.preload = 'metadata'; // Only preload metadata, not full video
       videoElement.style.width = '100vw';
       videoElement.style.height = '100vh';
       videoElement.style.backgroundColor = '#000';
@@ -120,41 +132,45 @@ export default function Home() {
     loadAndPlayVideo(currentIndex);
   };
 
-  // if (mode === 'auto') {
-  //   return <AutoVideoPlayer onBack={() => setMode(null)} />;
-  // }
-
-  if (mode === 'manual') {
-    return <ManualVideoPlayer onBack={() => setMode(null)} />;
+  if (mode !== null) {
+    return <HomeScreen screenIndex={mode} onBack={() => setMode(null)} />;
   }
 
   return (
     <div className={styles.page}>
+      {/* Video Background */}
+      {/*<video */}
+      {/*  className={styles.backgroundVideo}*/}
+      {/*  autoPlay */}
+      {/*  muted */}
+      {/*  loop */}
+      {/*  playsInline*/}
+      {/*  preload="metadata"*/}
+      {/*>*/}
+      {/*  <source src="/sources/PLC.mp4" type="video/mp4" />*/}
+      {/*  Your browser does not support the video tag.*/}
+      {/*</video>*/}
+
+      <img src="/background_petro.jpg" className={styles.backgroundVideo} alt="image background"/>
+
+      <div className={styles.overlay}></div>
+      
       <div className={styles.container}>
-        <header className={styles.header}>
-          <h1 className={styles.title}>Ban Công Nghệ An Toàn</h1>
-        </header>
 
         <div className={styles.buttonContainer}>
-          <button 
-            className={`${styles.modeButton} ${styles.autoButton}`}
-            onClick={startAutoPlayImmediately}
-          >
-            <div className={styles.buttonContent}>
-              <img src="/icons/auto-renewal.svg" style={{display: "inline-block"}} alt="Manual" width={50}></img>
-              <h3>Phát tự động</h3>
-            </div>
-          </button>
-
-          <button 
-            className={`${styles.modeButton} ${styles.manualButton}`}
-            onClick={() => setMode('manual')}
-          >
-            <div className={styles.buttonContent}>
-              <img src="/icons/hand-raised.svg" alt="Manual" width={50}></img>
-              <h3>Phát Thủ công</h3>
-            </div>
-          </button>
+          {
+            listScreen.map((screen, index) => (
+              <button
+                key={index}
+                className={`${styles.modeButton} ${screen === mode ? styles.activeButton : ''}`}
+                onClick={() => setMode(screen.path)}
+              >
+                <div className={styles.buttonContent}>
+                  <h3>{screen.name}</h3>
+                </div>
+              </button>
+            ))
+          }
         </div>
       </div>
     </div>

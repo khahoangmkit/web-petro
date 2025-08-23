@@ -102,13 +102,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   
   /* Background image with overlay */
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('/background_petro.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  /*background-image: */
+  /*  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),*/
+  /*  url('/background_petro.jpg');*/
+  /*background-size: cover;*/
+  /*background-position: center;*/
+  /*background-attachment: fixed;*/
+  /*background-repeat: no-repeat;*/
 }
 
 * {
