@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import styles from "./page.module.css";
-import ManualVideoPlayer from './components/ManualVideoPlayer';
 import HomeScreen from './components/HomeScreen';
 
 
@@ -132,10 +131,6 @@ export default function Home() {
     // Bắt đầu phát video đầu tiên
     loadAndPlayVideo(currentIndex);
   };
-
-  if (mode === '[screen]') {
-    return <ManualVideoPlayer onBack={() => setMode(null)} />;
-  }
 
   if (mode !== null) {
     return <HomeScreen screenIndex={mode} onBack={() => setMode(null)} />;

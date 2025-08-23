@@ -157,7 +157,7 @@ export const dataHome = {
   },
 
   screen67: {
-    title: 'Tổng Công ty Hóa dầu Petrolimex(PLC)',
+    title: '',
     background: '/backgrounds/BG_man67.jpg',
     videoList: [
       '/dataSources/67.Cty_CP_Petrolimex/PHIM_TCT_PETROLIMEX.mp4',
@@ -169,6 +169,7 @@ export const dataHome = {
       '/dataSources/67.Cty_CP_Petrolimex/PETROLIMEX_NhuaDuong.mp4',
       '/dataSources/67.Cty_CP_Petrolimex/15nam_nhuaduongfinal.mp4',
       '/dataSources/67.Cty_CP_Petrolimex/nhua_duong_sp.mp4',
+      '/dataSources/67.Cty_CP_Petrolimex/GioiThieu_PLC_HoaChat.mp4',
       '/dataSources/67.Cty_CP_Petrolimex/hoa_chat_sp.mp4'
     ],
     name: 'Tổng Công ty Hóa dầu Petrolimex(PLC)',
@@ -230,7 +231,17 @@ export const dataHome = {
       },
       {
         name: 'Hóa chất',
-        path: '/dataSources/67.Cty_CP_Petrolimex/hoa_chat_sp.mp4',
+        path: '#',
+        children: [
+          {
+            name: 'Giới thiệu Công ty',
+            path: '/dataSources/67.Cty_CP_Petrolimex/GioiThieu_PLC_HoaChat.mp4'
+          },
+          {
+            name: 'Sản phẩm hoá chất',
+            path: '/dataSources/67.Cty_CP_Petrolimex/hoa_chat_sp.mp4'
+          }
+        ]
       }
     ]
   },
@@ -288,5 +299,3 @@ export const dataHome = {
   }
 
 };
-
-export const videoConfigData = {}

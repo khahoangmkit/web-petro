@@ -105,18 +105,18 @@ export default function ManualScreen({onBack, screen}) {
   return (
     <div className={styles.container}>
       {/*<img src="/backgrounds/screen_01.png" alt="anh nen" style={{ width: '100%', height: '100%', position: 'absolute', zIndex: -1}}/>*/}
-      <div className={styles.buttonContainer}>
+      <div className={`${styles.buttonContainer} ${screen === 'screen67' ? styles.btnContainerPLC : ''}`}>
         {/* Node hiện tại (header) */}
-        <button className={`${styles.btnPiacom} ${styles.parentNode}`}>
+        <button  style={{ display: path.length <= 1 && screen === 'screen67' ? 'none' : 'block' }} className={`${styles.btnPiacom} ${styles.parentNode}`}>
           {currentNode.name}
         </button>
 
         {/* Danh sách các node con */}
-        <div className={styles.contentContainer}>
+        <div className={`${styles.contentContainer} ${screen === 'screen67' ? styles.contentContainerPLC : ''}`}>
           {children.map((child, idx) => (
             <button
               key={idx}
-              className={styles.btnPiacom}
+              className={`${styles.btnPiacom} ${screen === 'screen67' ? styles.btnScreen67 : ''}`}
               onClick={() => handleChildClick(child)}
             >
               {child.name}

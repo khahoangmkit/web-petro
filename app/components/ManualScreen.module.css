@@ -40,8 +40,13 @@
     cursor: pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
     min-width: 30%;
-    max-width: 30%;
+    max-width: 35%;
     min-height: 7.8rem;
+}
+
+.btnScreen67 {
+    min-width:unset;
+    max-width: 23%;
 }
 
 .btnPiacom:hover {
@@ -83,6 +88,10 @@
     align-items: center;
     gap: 10rem;
 }
+.btnContainerPLC {
+    padding: 30rem 3rem 0 3rem;
+    gap: 3rem;
+}
 
 .contentContainer {
     display: flex;
@@ -93,5 +102,10 @@
     flex-wrap: wrap;
     gap: 3rem;
     padding: 0 1rem 2rem 1rem;
+}
+
+.contentContainerPLC {
+    flex: 1 1 0;
+    gap: 1rem;
 }
 
