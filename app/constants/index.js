@@ -27,21 +27,30 @@ export const dataHome = {
         ]
       },
       {
-        name: 'Ban Công nghệ thông tin',
+        name: 'Ban Công nghệ thông tin & Chuyển đổi số',
         path: '#',
         children: [
           {
-            name: 'Quản lý đơn hàng',
-            path: '/dataSources/1.Chuyen_doi_so/2.BanCNTT/1.QuanLyDonHang.mp4'
+            name: 'Giới thiệu chung',
+            path: '/dataSources/1.Chuyen_doi_so/2.BanCNTT/Gioithieu.mp4'
           },
           {
-            name: 'Định danh tài khoản bằng NFC',
-            path: '/dataSources/1.Chuyen_doi_so/2.BanCNTT/2.DinhDangTaiKhoanNFC.mp4'
+            name: 'Tìm kiếm cửa hàng xăng dầu',
+            path: '/dataSources/1.Chuyen_doi_so/2.BanCNTT/timkiemcuahang.mp4'
           },
           {
-            name: 'Tài khoản liên kết',
-            path: '/dataSources/1.Chuyen_doi_so/2.BanCNTT/3.TaiKhoanLienKet.mp4'
+            name: 'Đơn hàng đổ nhiên liệu',
+            path: '/dataSources/1.Chuyen_doi_so/2.BanCNTT/donhienlieu.mp4'
           },
+          {
+            name: 'Đơn hàng thương mại điện tử',
+            path: '/dataSources/1.Chuyen_doi_so/2.BanCNTT/thuongmaidientu.mp4'
+          },
+          {
+            name: 'Quản lý voucher',
+            path: '/dataSources/1.Chuyen_doi_so/2.BanCNTT/quanlyvoucher.mp4'
+          },
+
         ]
       }
     ]
