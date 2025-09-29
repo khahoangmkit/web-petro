@@ -97,18 +97,6 @@ export default function HomeScreen({screenIndex}) {
 
   return (
     <div className={`${styles.pageHomeScreen} ${screenIndex === 'screen1' ? styles.screen1 : ''}`}>
-       {/*Video Background*/}
-
-      {/*<video*/}
-      {/*  className={styles.backgroundVideo}*/}
-      {/*  autoPlay*/}
-      {/*  muted*/}
-      {/*  loop*/}
-      {/*  playsInline*/}
-      {/*>*/}
-      {/*  <source src="/sources/PLC.mp4" type="video/mp4" />*/}
-      {/*  Your browser does not support the video tag.*/}
-      {/*</video>*/}
 
       <img src={data.background} alt="anh nen" style={{ width: '100%', height: '100%', position: 'absolute', zIndex: -1}}/>
 

@@ -7,16 +7,13 @@ import HomeScreen from './components/HomeScreen';
 
 
 export default function Home() {
-  const [mode, setMode] = useState(null); // null, 'auto', '[screen]', 'screen1'
+  const [mode, setMode] = useState('screen1'); // null, 'auto', '[screen]', 'screen1'
 
   const listScreen = [
     { name: 'Screen 1', path: 'screen1' },
-    { name: 'Screen 2 + 3', path: 'screen23' },
+    { name: 'Screen 2 ', path: 'screen2' },
+    { name: 'Screen 3', path: 'screen3' },
     { name: 'Screen 4', path: 'screen4' },
-    { name: 'Screen 5', path: 'screen5' },
-    { name: 'Screen 6 + 7', path: 'screen67' },
-    { name: 'Screen 8', path: 'screen8' },
-    { name: 'Screen 9', path: 'screen9' },
     ];
 
   // Danh sách tất cả video để phát tự động
