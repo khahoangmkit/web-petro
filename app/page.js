@@ -7,7 +7,7 @@ import HomeScreen from './components/HomeScreen';
 
 
 export default function Home() {
-  const [mode, setMode] = useState('screen1'); // null, 'auto', '[screen]', 'screen1'
+  const [mode, setMode] = useState('screen2'); // null, 'auto', '[screen]', 'screen1'
 
   const listScreen = [
     { name: 'Screen 1', path: 'screen1' },

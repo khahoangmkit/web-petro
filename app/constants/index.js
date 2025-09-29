@@ -13,10 +13,8 @@ export const dataHome = {
     background: '/backgrounds/chuyen_doi_so.png',
     videoList: [
       '/dataSources/screen_2/quan_tri_boi_bo.mp4',
-      '/dataSources/screen_2/tim_kiem_cua_hang_xang_dau.mp4',
-      '/dataSources/screen_2/quan_ly_voucher.mp4',
-      '/dataSources/screen_2/don_hang_nhien_lieu.mp4',
-      '/dataSources/screen_2/don_hang_tmdt.mp4',
+      '/dataSources/screen_2/app_petro.mp4',
+
     ],
     name: 'Chuyển đổi số',
     path: '#',
@@ -27,25 +25,7 @@ export const dataHome = {
       },
       {
         name: 'App Petrolimex 2.0',
-        path: '#',
-        children: [
-          {
-            name: 'Tìm kiếm cửa hàng Xăng dầu',
-            path: '/dataSources/screen_2/tim_kiem_cua_hang_xang_dau.mp4'
-          },
-          {
-            name: 'Quản lý Voucher',
-            path: '/dataSources/screen_2/quan_ly_voucher.mp4'
-          },
-          {
-            name: 'Đơn hàng đổ nhiên liệu',
-            path: '/dataSources/screen_2/don_hang_nhien_lieu.mp4'
-          },
-          {
-            name: 'Đơn hàng thương mại điện tử',
-            path: '/dataSources/screen_2/don_hang_tmdt.mp4'
-          }
-        ]
+        path: '/dataSources/screen_2/app_petro.mp4',
       }
     ]
   },

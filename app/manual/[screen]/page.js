@@ -14,11 +14,8 @@ export default function Page({ params }) {
 export function generateStaticParams() {
   return [
     { screen: 'screen1' },
-    { screen: 'screen23' },
+    { screen: 'screen2' },
+    { screen: 'screen3' },
     { screen: 'screen4' },
-    { screen: 'screen5' },
-    { screen: 'screen67' },
-    { screen: 'screen8' },
-    { screen: 'screen9' },
   ];
 }
